@@ -1,0 +1,45 @@
+/* Main Container */
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+}
+
+/* Left Side: Advanced Filtering */
+.left-side {
+  grid-column: 1 / 2;
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Middle: Listings */
+.middle-side {
+  grid-column: 2 / 3;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Right Side: Map and Additional Options */
+.right-side {
+  grid-column: 3 / 4;
+  display: flex; /* Add flex display to allow children to expand vertically */
+  flex-direction: column; /* Ensure children stack vertically */
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Map Container */
+#map-container {
+  flex-grow: 1; /* Allow the map container to expand and fill the available space */
+  position: relative; /* Ensure proper positioning for the map component */
+}
+
+/* Additional Options */
+.additional-options {
+  /* Add your styles for additional options here */
+}
+
+/* Other styles for checkboxes, radio buttons, etc. can be added as needed */

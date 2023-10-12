@@ -1,0 +1,80 @@
+.login-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-header h1,
+.login-header p {
+  margin: 0;
+  padding: 0;
+}
+
+.social-logins button {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.google-login {
+  background-color: #4285f4;
+  color: white;
+}
+
+.facebook-login {
+  background-color: #3b5998;
+  color: white;
+}
+
+.apple-login {
+  background-color: black;
+  color: white;
+}
+
+.or-divider {
+  text-align: center;
+  margin: 16px 0;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 90%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.forgot-password {
+  float: right;
+  margin-top: 4px;
+}
+
+.register-section,
+.two-factor-section {
+  text-align: center;
+  margin-top: 16px;
+}

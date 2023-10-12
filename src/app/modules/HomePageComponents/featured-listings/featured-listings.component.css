@@ -1,0 +1,95 @@
+/* General Container */
+.featured-listings {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Section Header */
+.featured-listings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Listings Grid */
+mat-grid-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Listing Cards */
+.listing-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-height: 400px;
+}
+
+/* Card Header */
+.seller-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Image Container */
+.image-container {
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Image */
+.listing-image {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+/* Listing Info */
+.listing-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* User Interactions */
+.mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Social Proof */
+.ratings,
+.reviews {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+/* Pagination */
+mat-paginator {
+  margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .listing-card {
+    flex-direction: column;
+  }
+}
+
+.mat-mdc-card-subtitle {
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+  width: 100%;
+}

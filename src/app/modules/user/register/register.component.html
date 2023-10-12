@@ -1,0 +1,74 @@
+<div class="register-container">
+  <div class="register-header">
+    <h1>Create an Account</h1>
+    <p>Sign up to get started.</p>
+  </div>
+  <!-- Registration Form -->
+  <form (submit)="onRegister()">
+    <div class="form-group">
+      <label for="fullName">Full Name</label>
+      <input
+        type="text"
+        id="fullName"
+        [(ngModel)]="fullName"
+        name="fullName"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="email"
+        name="email"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        [(ngModel)]="confirmPassword"
+        name="confirmPassword"
+        required
+      />
+    </div>
+    <button type="submit" class="register-button">Sign Up</button>
+  </form>
+
+  <!-- Social Registration Options -->
+  <div class="social-registration">
+    <p>Or sign up with:</p>
+    <button (click)="registerWithGoogle()" class="google-register">
+      Sign up with Google
+    </button>
+    <button (click)="registerWithFacebook()" class="facebook-register">
+      Sign up with Facebook
+    </button>
+    <button (click)="registerWithApple()" class="apple-register">
+      Sign up with Apple
+    </button>
+    <button (click)="registerWithGitHub()" class="github-register">
+      Sign up with GitHub
+    </button>
+    <button (click)="registerWithDiscord()" class="discord-register">
+      Sign up with Discord
+    </button>
+  </div>
+
+  <div class="login-section">
+    <p>Already have an account? <a href="#">Sign In</a></p>
+  </div>
+</div>
