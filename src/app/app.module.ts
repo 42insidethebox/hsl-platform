@@ -20,11 +20,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // <-- Import MatButtonModule
 import { ListingComponent } from './modules/service/listing/listing.component';
 import { MatRadioModule } from '@angular/material/radio';
-import { MapComponent } from './modules/map/map.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatOptionModule } from '@angular/material/core'; // Import MatOptionModule
-
-import { GmpMapModule, GmpAdvancedMarkerModule } from 'google-maps-pro-angular';
+import { MapComponent } from './modules/map/map.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,12 +35,6 @@ import { GmpMapModule, GmpAdvancedMarkerModule } from 'google-maps-pro-angular';
     DashboardComponent,
     ListingComponent,
     MapComponent,
-    GmpMapModule,
-    GmpAdvancedMarkerModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatRadioModule,
-    FormsModule,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +52,10 @@ import { GmpMapModule, GmpAdvancedMarkerModule } from 'google-maps-pro-angular';
     MatRadioModule,
     MatSelectModule,
     MatOptionModule, // Add MatOptionModule here
+    MatSelectModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

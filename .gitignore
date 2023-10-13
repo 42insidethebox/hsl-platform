@@ -51,6 +51,8 @@ src/environments/*.ts
 # Ignore environment variable files (example: .env)
 *.env
 
+# Ignore the entire /src/environments directory
+/src/environments/
 
 # System files
 .DS_Store

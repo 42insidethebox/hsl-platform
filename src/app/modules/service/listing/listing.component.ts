@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-listing',
@@ -9,13 +6,24 @@ import { MatOptionModule } from '@angular/material/core';
   styleUrls: ['./listing.component.css'],
 })
 export class ListingComponent implements OnInit {
-  showOnlyFavorites: boolean = false; // Define showOnlyFavorites property
-  sortOption: string = 'relevance'; // Define sortOption property
   // Sample data structure for listings (You can replace this with your actual data)
-  listings = [
-    // Your listing objects here...
+  featuredListings = [
+    {
+      id: 1,
+      title: 'Sample Listing 1',
+      description: 'This is a description',
+      price: 100,
+      location: 'New York',
+      category: 'Electronics',
+      image:
+        'https://assets.wired.com/photos/w_1164/wp-content/uploads/2019/01/Culture_GeeksGuide_Bezos.jpg', // <-- Correct path
+      seller: {
+        name: 'John Doe',
+        avatar:
+          'https://assets.wired.com/photos/w_1164/wp-content/uploads/2019/01/Culture_GeeksGuide_Bezos.jpg', // <-- Correct path
+      },
+    },
   ];
-
   // Variables for advanced filters
   selectedIndustries: string[] = [];
   selectedSkills: string[] = [];
@@ -24,7 +32,7 @@ export class ListingComponent implements OnInit {
 
   ngOnInit(): void {
     // Fetch the listings from API here
-    console.log('Listings:', this.listings);
+    console.log('Listings:', this.featuredListings);
   }
 
   // Function to handle changes in selected industries
