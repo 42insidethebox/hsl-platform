@@ -37,6 +37,21 @@ yarn-error.log
 testem.log
 /typings
 
+# Ignore .angular directory
+.angular/
+
+# Ignore .vscode directory
+.vscode/
+
+# Ignore node_modules directory
+node_modules/
+
+# Ignore environment files in src/environments directory
+src/environments/*.ts
+# Ignore environment variable files (example: .env)
+*.env
+
+
 # System files
 .DS_Store
 Thumbs.db
