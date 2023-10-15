@@ -1,152 +1,346 @@
-<div class="left-side">
-  <!-- Filter by Sub-Industries -->
-  <mat-form-field appearance="fill">
-    <mat-label>Sub-Industries</mat-label>
-    <mat-select multiple>
-      <mat-option value="ai">Artificial Intelligence</mat-option>
-      <mat-option value="biotech">Biotech</mat-option>
-      <!-- Add more sub-industries -->
-    </mat-select>
-  </mat-form-field>
+<div #mainContainer [ngClass]="getMainContainerClass()" class="main-container">
+  <div
+    class="left-side"
+    [@collapseLeft]="isLeftSideCollapsed ? 'closed' : 'open'"
+  >
+    <!-- Filter by Sub-Industries -->
+    <mat-form-field appearance="fill">
+      <mat-label>Sub-Industries</mat-label>
+      <mat-select multiple>
+        <mat-option value="ai">Artificial Intelligence</mat-option>
+        <mat-option value="biotech">Biotech</mat-option>
+        <!-- Add more sub-industries -->
+      </mat-select>
+    </mat-form-field>
 
-  <!-- Filter by Skills -->
-  <mat-form-field appearance="fill">
-    <mat-label>Skills</mat-label>
-    <mat-select multiple>
-      <mat-option value="coding">Coding</mat-option>
-      <mat-option value="design">Design</mat-option>
-      <mat-option value="management">Management</mat-option>
-      <!-- Add more skills -->
-    </mat-select>
-  </mat-form-field>
+    <!-- Filter by Skills -->
+    <mat-form-field appearance="fill">
+      <mat-label>Skills</mat-label>
+      <mat-select multiple>
+        <mat-option value="coding">Coding</mat-option>
+        <mat-option value="design">Design</mat-option>
+        <mat-option value="management">Management</mat-option>
+        <!-- Add more skills -->
+      </mat-select>
+    </mat-form-field>
 
-  <!-- Filter by Experience Level -->
-  <mat-form-field appearance="fill">
-    <mat-label>Experience Level</mat-label>
-    <mat-select>
-      <mat-option value="junior">Junior</mat-option>
-      <mat-option value="mid">Mid-Level</mat-option>
-      <mat-option value="senior">Senior</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <!-- Filter by Experience Level -->
+    <mat-form-field appearance="fill">
+      <mat-label>Experience Level</mat-label>
+      <mat-select>
+        <mat-option value="junior">Junior</mat-option>
+        <mat-option value="mid">Mid-Level</mat-option>
+        <mat-option value="senior">Senior</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <!-- Filter by Location -->
-  <mat-form-field appearance="fill">
-    <mat-label>Location</mat-label>
-    <mat-select multiple>
-      <mat-option value="new-york">New York</mat-option>
-      <mat-option value="san-francisco">San Francisco</mat-option>
-      <!-- Add more locations -->
-    </mat-select>
-  </mat-form-field>
+    <!-- Filter by Location -->
+    <mat-form-field appearance="fill">
+      <mat-label>Location</mat-label>
+      <mat-select multiple>
+        <mat-option value="new-york">New York</mat-option>
+        <mat-option value="san-francisco">San Francisco</mat-option>
+        <!-- Add more locations -->
+      </mat-select>
+    </mat-form-field>
 
-  <!-- Filter by Job Type -->
-  <mat-form-field appearance="fill">
-    <mat-label>Job Type</mat-label>
-    <mat-select>
-      <mat-option value="full-time">Full-Time</mat-option>
-      <mat-option value="part-time">Part-Time</mat-option>
-      <mat-option value="contract">Contract</mat-option>
-      <mat-option value="hsl">HSL</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <!-- Filter by Job Type -->
+    <mat-form-field appearance="fill">
+      <mat-label>Job Type</mat-label>
+      <mat-select>
+        <mat-option value="full-time">Full-Time</mat-option>
+        <mat-option value="part-time">Part-Time</mat-option>
+        <mat-option value="contract">Contract</mat-option>
+        <mat-option value="hsl">HSL</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <!-- Filter by Salary Range -->
-  <mat-form-field appearance="fill">
-    <mat-label>Salary Range</mat-label>
-    <mat-select>
-      <mat-option value="0-50000">$0 - $50,000</mat-option>
-      <mat-option value="50001-100000">$50,001 - $100,000</mat-option>
-      <mat-option value="100001-150000">$100,001 - $150,000</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <!-- Filter by Salary Range -->
+    <mat-form-field appearance="fill">
+      <mat-label>Salary Range</mat-label>
+      <mat-select>
+        <mat-option value="0-50000">$0 - $50,000</mat-option>
+        <mat-option value="50001-100000">$50,001 - $100,000</mat-option>
+        <mat-option value="100001-150000">$100,001 - $150,000</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <!-- Filter by Remote Options -->
-  <mat-form-field appearance="fill">
-    <mat-label>Remote Options</mat-label>
-    <mat-select>
-      <mat-option value="yes">Yes</mat-option>
-      <mat-option value="no">No</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <!-- Filter by Remote Options -->
+    <mat-form-field appearance="fill">
+      <mat-label>Remote Options</mat-label>
+      <mat-select>
+        <mat-option value="yes">Yes</mat-option>
+        <mat-option value="no">No</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <!-- Filter by Language -->
-  <mat-form-field appearance="fill">
-    <mat-label>Language</mat-label>
-    <mat-select multiple>
-      <mat-option value="english">English</mat-option>
-      <mat-option value="spanish">Spanish</mat-option>
-      <!-- Add more languages -->
-    </mat-select>
-  </mat-form-field>
+    <!-- Filter by Language -->
+    <mat-form-field appearance="fill">
+      <mat-label>Language</mat-label>
+      <mat-select multiple>
+        <mat-option value="english">English</mat-option>
+        <mat-option value="spanish">Spanish</mat-option>
+        <!-- Add more languages -->
+      </mat-select>
+    </mat-form-field>
 
-  <!-- Filter by Certifications -->
-  <mat-form-field appearance="fill">
-    <mat-label>Certifications</mat-label>
-    <mat-select multiple>
-      <mat-option value="pmp">PMP</mat-option>
-      <mat-option value="cfa">CFA</mat-option>
-      <!-- Add more certifications -->
-    </mat-select>
-  </mat-form-field>
+    <!-- Filter by Certifications -->
+    <mat-form-field appearance="fill">
+      <mat-label>Certifications</mat-label>
+      <mat-select multiple>
+        <mat-option value="pmp">PMP</mat-option>
+        <mat-option value="cfa">CFA</mat-option>
+        <!-- Add more certifications -->
+      </mat-select>
+    </mat-form-field>
 
-  <!-- Filter by Education Level -->
-  <mat-form-field appearance="fill">
-    <mat-label>Education Level</mat-label>
-    <mat-select>
-      <mat-option value="bachelors">Bachelor's</mat-option>
-      <mat-option value="masters">Master's</mat-option>
-      <mat-option value="phd">Ph.D.</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <!-- Filter by Education Level -->
+    <mat-form-field appearance="fill">
+      <mat-label>Education Level</mat-label>
+      <mat-select>
+        <mat-option value="bachelors">Bachelor's</mat-option>
+        <mat-option value="masters">Master's</mat-option>
+        <mat-option value="phd">Ph.D.</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <!-- Filter by Availability -->
-  <mat-form-field appearance="fill">
-    <mat-label>Availability</mat-label>
-    <mat-select>
-      <mat-option value="immediate">Immediate</mat-option>
-      <mat-option value="1-month">1 Month</mat-option>
-      <mat-option value="3-months">3 Months</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <!-- Filter by Availability -->
+    <mat-form-field appearance="fill">
+      <mat-label>Availability</mat-label>
+      <mat-select>
+        <mat-option value="immediate">Immediate</mat-option>
+        <mat-option value="1-month">1 Month</mat-option>
+        <mat-option value="3-months">3 Months</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <!-- Filter by Gender -->
-  <mat-form-field appearance="fill">
-    <mat-label>Gender</mat-label>
-    <mat-select>
-      <mat-option value="male">Male</mat-option>
-      <mat-option value="female">Female</mat-option>
-      <mat-option value="non-binary">Non-Binary</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <!-- Filter by Gender -->
+    <mat-form-field appearance="fill">
+      <mat-label>Gender</mat-label>
+      <mat-select>
+        <mat-option value="male">Male</mat-option>
+        <mat-option value="female">Female</mat-option>
+        <mat-option value="non-binary">Non-Binary</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <!-- Sub-options for each industry -->
-  <!-- Add your sub-options logic here -->
+    <!-- Sub-options for each industry -->
+    <!-- Add your sub-options logic here -->
 
-  <!-- Multiple boxes for different skills -->
-  <mat-form-field appearance="fill">
-    <mat-label>Skills</mat-label>
-    <mat-select multiple>
-      <mat-option value="coding">Coding</mat-option>
-      <mat-option value="design">Design</mat-option>
-      <!-- Add more skills -->
-    </mat-select>
-  </mat-form-field>
-</div>
+    <!-- Multiple boxes for different skills -->
+    <mat-form-field appearance="fill">
+      <mat-label>Skills</mat-label>
+      <mat-select multiple>
+        <mat-option value="coding">Coding</mat-option>
+        <mat-option value="design">Design</mat-option>
+        <!-- Add more skills -->
+      </mat-select>
+    </mat-form-field>
+  </div>
 
-<!-- Middle: Listings -->
-<div class="middle-side">
-  <!-- Your existing featured listings code can go here -->
-  <!-- ... -->
-</div>
+  <!-- Middle: Listings -->
+  <div class="middle-section">
+    <!-- Your existing featured listings code can go here -->
+    <app-featured-listings [isStandalone]="false"></app-featured-listings>
+    <!-- ... -->
+  </div>
 
-<!-- Right Side: Map and Additional Options -->
-<div class="right-side">
-  <h2>Map</h2>
-  <!-- Map with circle and radius -->
-  <!-- Add your map logic here -->
+  <!-- Right Side: Map and Additional Options -->
+  <div
+    class="right-side"
+    [@collapseRight]="isRightSideCollapsed ? 'closed' : 'open'"
+  >
+    <h2>Map</h2>
+    <!-- Map with circle and radius -->
+    <!-- Add your map logic here -->
+    <app-map></app-map>
+    <!-- Additional Options -->
+    <h2>Additional Options</h2>
+    <div class="additional-options">
+      <!-- Date and Time Filters -->
+      <div class="date-time-filters">
+        <h3>Date and Time</h3>
+        <!-- Preferred Service Date -->
+        <div class="form-group">
+          <label for="preferred-service-date">Preferred Service Date</label>
+          <input type="date" id="preferred-service-date" class="form-control" />
+        </div>
+        <!-- Service Duration -->
+        <div class="form-group">
+          <label for="service-duration">Service Duration (in hours)</label>
+          <input type="number" id="service-duration" class="form-control" />
+        </div>
+        <!-- Preferred Time Slot -->
+        <div class="form-group">
+          <label for="preferred-time-slot">Preferred Time Slot</label>
+          <select id="preferred-time-slot" class="form-control">
+            <option value="morning">Morning</option>
+            <option value="afternoon">Afternoon</option>
+            <option value="evening">Evening</option>
+          </select>
+        </div>
+      </div>
 
-  <!-- Additional Options -->
-  <h2>Additional Options</h2>
-  <!-- Add your additional options here -->
+      <!-- Budget Filters -->
+      <div class="budget-filters">
+        <h3>Budget</h3>
+        <!-- Predefined Ranges -->
+        <div class="form-group">
+          <label for="budget-range">Budget Range</label>
+          <select id="budget-range" class="form-control">
+            <option value="0-50">$0 - $50</option>
+            <option value="51-100">$51 - $100</option>
+            <!-- Add more predefined ranges -->
+          </select>
+        </div>
+        <!-- Custom Budget -->
+        <div class="form-group">
+          <label for="custom-budget">Custom Budget</label>
+          <input type="number" id="custom-budget" class="form-control" />
+        </div>
+      </div>
+
+      <!-- Provider Ratings and Reviews -->
+      <div class="ratings-reviews-filters">
+        <h3>Ratings and Reviews</h3>
+        <!-- Minimum Rating -->
+        <div class="form-group">
+          <label for="minimum-rating">Minimum Rating</label>
+          <select id="minimum-rating" class="form-control">
+            <option value="5">5 stars</option>
+            <option value="4">4 stars</option>
+            <option value="3">3 stars</option>
+            <option value="2">2 stars</option>
+            <option value="1">1 star</option>
+          </select>
+        </div>
+        <!-- Minimum Number of Reviews -->
+        <div class="form-group">
+          <label for="minimum-reviews">Minimum Number of Reviews</label>
+          <input type="number" id="minimum-reviews" class="form-control" />
+        </div>
+      </div>
+
+      <!-- Service Location Filters -->
+      <div class="location-filters">
+        <h3>Service Location</h3>
+        <!-- Radius Search -->
+        <div class="form-group">
+          <label for="radius-search">Radius Search (within X miles)</label>
+          <input type="number" id="radius-search" class="form-control" />
+        </div>
+        <!-- City/Neighborhood Selection -->
+        <div class="form-group">
+          <label for="location-selection">Select City/Neighborhood</label>
+          <select id="location-selection" class="form-control" multiple>
+            <option value="new-york">New York</option>
+            <option value="san-francisco">San Francisco</option>
+            <!-- Add more locations -->
+          </select>
+        </div>
+      </div>
+
+      <!-- Provider Availability -->
+      <div class="provider-availability-filters">
+        <h3>Provider Availability</h3>
+        <!-- Providers available on weekends -->
+        <div class="form-group">
+          <label for="weekends-availability"
+            >Providers available on weekends</label
+          >
+          <input
+            type="checkbox"
+            id="weekends-availability"
+            class="form-check-input"
+          />
+        </div>
+        <!-- Providers with flexible schedules -->
+        <div class="form-group">
+          <label for="flexible-schedules"
+            >Providers with flexible schedules</label
+          >
+          <input
+            type="checkbox"
+            id="flexible-schedules"
+            class="form-check-input"
+          />
+        </div>
+      </div>
+
+      <!-- Advanced Search -->
+      <div class="advanced-search-filters">
+        <h3>Advanced Search</h3>
+        <!-- Keywords -->
+        <div class="form-group">
+          <label for="keywords">Keywords</label>
+          <input type="text" id="keywords" class="form-control" />
+        </div>
+        <!-- Specific Certifications -->
+        <div class="form-group">
+          <label for="certifications">Specific Certifications</label>
+          <select id="certifications" class="form-control" multiple>
+            <option value="pmp">PMP</option>
+            <option value="cfa">CFA</option>
+            <!-- Add more certifications -->
+          </select>
+        </div>
+      </div>
+
+      <!-- Service Quality Filters -->
+      <div class="service-quality-filters">
+        <h3>Service Quality</h3>
+        <!-- Standard Service -->
+        <div class="form-group">
+          <label for="standard-service">Standard Service</label>
+          <input
+            type="checkbox"
+            id="standard-service"
+            class="form-check-input"
+          />
+        </div>
+        <!-- Premium Service -->
+        <div class="form-group">
+          <label for="premium-service">Premium Service</label>
+          <input
+            type="checkbox"
+            id="premium-service"
+            class="form-check-input"
+          />
+        </div>
+        <!-- Basic Service -->
+        <div class="form-group">
+          <label for="basic-service">Basic Service</label>
+          <input type="checkbox" id="basic-service" class="form-check-input" />
+        </div>
+      </div>
+
+      <!-- Language Filters -->
+      <div class="language-filters">
+        <h3>Languages</h3>
+        <!-- Language Selection -->
+        <div class="form-group">
+          <label for="language-selection">Select Language</label>
+          <select id="language-selection" class="form-control" multiple>
+            <option value="english">English</option>
+            <option value="spanish">Spanish</option>
+            <!-- Add more languages -->
+          </select>
+        </div>
+      </div>
+
+      <!-- Additional Requirements -->
+      <div class="additional-requirements">
+        <h3>Additional Requirements</h3>
+        <!-- Service Guarantees -->
+        <div class="form-group">
+          <label for="service-guarantees">Service Guarantees</label>
+          <input
+            type="checkbox"
+            id="service-guarantees"
+            class="form-check-input"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

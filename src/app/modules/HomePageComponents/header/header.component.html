@@ -1,0 +1,319 @@
+<header>
+  <mat-toolbar-row
+    class="color-toolbar"
+    color="primary"
+    [class.large-screen]="isLargeScreen"
+  >
+    <div [style.height]="headerHeight" class="header-content">
+      <!-- Your existing header content goes here -->
+      <mat-toolbar-row>
+        <!-- Logo -->
+        <div class="mobile-wrap-menu">
+          <!-- Logo Container -->
+          <div class="logo-container">
+            <!-- New container for the logo -->
+            <div class="logo">
+              <img
+                class="hsl-logo"
+                src="./../../../../assets/images/hsl-logo.png"
+                alt="HSL Logo"
+                height="48px"
+              />
+            </div>
+          </div>
+          <!-- Burger Icon -->
+          <div class="burger-icon" id="burgerIcon" (click)="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+
+          <!-- Main Categories -->
+          <li mat-menu-item>
+            <button
+              mat-button
+              [matMenuTriggerFor]="homeMenu"
+              class="menu-title"
+            >
+              <mat-icon class="menu-icon">home</mat-icon> Home
+            </button>
+            <mat-menu #homeMenu="matMenu">
+              <button
+                mat-menu-item
+                [matMenuTriggerFor]="dashboardMenu"
+                class="menu-item"
+              >
+                <mat-icon>dashboard</mat-icon> Dashboard
+              </button>
+              <mat-menu #dashboardMenu="matMenu">
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>analytics</mat-icon> Overview
+                </button>
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>list</mat-icon> Activity Feed
+                </button>
+              </mat-menu>
+              <button
+                mat-menu-item
+                [matMenuTriggerFor]="personalizedFeedMenu"
+                class="menu-item"
+              >
+                <mat-icon>feed</mat-icon> Personalized Feed
+              </button>
+              <mat-menu #personalizedFeedMenu="matMenu">
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>whatshot</mat-icon> Trending Services
+                </button>
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>star</mat-icon> Recommended Listings
+                </button>
+              </mat-menu>
+            </mat-menu>
+          </li>
+
+          <!-- Services -->
+          <li mat-menu-item>
+            <button
+              mat-button
+              [matMenuTriggerFor]="servicesMenu"
+              class="menu-title"
+            >
+              <mat-icon class="menu-icon">build</mat-icon> Services
+            </button>
+            <mat-menu #servicesMenu="matMenu">
+              <button mat-menu-item class="menu-item">
+                <mat-icon>search</mat-icon> Browse Listings
+              </button>
+              <button mat-menu-item class="menu-item">
+                <mat-icon>add_circle</mat-icon> Create Listing
+              </button>
+              <button mat-menu-item class="menu-item">
+                <mat-icon>list_alt</mat-icon> My Listings
+              </button>
+              <button mat-menu-item class="menu-item">
+                <mat-icon>category</mat-icon> Categories
+              </button>
+              <button mat-menu-item class="menu-item">
+                <mat-icon>event</mat-icon> Bookings
+              </button>
+              <button mat-menu-item class="menu-item">
+                <mat-icon>favorite</mat-icon> Favorites
+              </button>
+              <button mat-menu-item class="menu-item">
+                <mat-icon>rate_review</mat-icon> Reviews
+              </button>
+              <!-- Add more subcategory items with icons -->
+            </mat-menu>
+          </li>
+
+          <!-- User Profile -->
+          <li mat-menu-item>
+            <button
+              mat-button
+              [matMenuTriggerFor]="profileMenu"
+              class="menu-title"
+            >
+              <mat-icon class="menu-icon">person</mat-icon> User Profile
+            </button>
+            <mat-menu #profileMenu="matMenu">
+              <button mat-menu-item class="menu-item">
+                <mat-icon>account_circle</mat-icon> My Profile
+              </button>
+              <button mat-menu-item class="menu-item">
+                <mat-icon>settings</mat-icon> Settings
+              </button>
+              <mat-menu #settingsMenu="matMenu">
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>settings</mat-icon> General
+                </button>
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>account_box</mat-icon> Account
+                </button>
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>privacy_tip</mat-icon> Privacy
+                </button>
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>notifications</mat-icon> Notifications
+                </button>
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>security</mat-icon> Security
+                </button>
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>palette</mat-icon> Appearance
+                </button>
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>language</mat-icon> Language
+                </button>
+                <!-- Add more subcategory items with icons -->
+              </mat-menu>
+            </mat-menu>
+          </li>
+
+          <!-- Community -->
+          <li mat-menu-item>
+            <button
+              mat-button
+              [matMenuTriggerFor]="communityMenu"
+              class="menu-title"
+            >
+              <mat-icon class="menu-icon">forum</mat-icon> Community
+            </button>
+            <mat-menu #communityMenu="matMenu">
+              <button mat-menu-item class="menu-item">
+                <mat-icon>forum</mat-icon> Forums
+              </button>
+              <button mat-menu-item class="menu-item">
+                <mat-icon>group</mat-icon> Groups
+              </button>
+              <!-- Add more subcategory items with icons -->
+            </mat-menu>
+          </li>
+
+          <!-- Transactions -->
+          <li mat-menu-item>
+            <button
+              mat-button
+              [matMenuTriggerFor]="transactionsMenu"
+              class="menu-title"
+            >
+              <mat-icon class="menu-icon">payment</mat-icon> Transactions
+            </button>
+            <mat-menu #transactionsMenu="matMenu">
+              <button mat-menu-item class="menu-item">
+                <mat-icon>attach_money</mat-icon> Payments
+              </button>
+              <mat-menu #paymentsMenu="matMenu">
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>send</mat-icon> Send Payment
+                </button>
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>receive</mat-icon> Receive Payment
+                </button>
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>history</mat-icon> Payment History
+                </button>
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>receipt</mat-icon> Payment Details
+                </button>
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>info</mat-icon> Payment Status
+                </button>
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>report</mat-icon> Payment Disputes
+                </button>
+                <!-- Add more subcategory items with icons -->
+              </mat-menu>
+              <button mat-menu-item class="menu-item">
+                <mat-icon>description</mat-icon> Invoices
+              </button>
+              <mat-menu #invoicesMenu="matMenu">
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>note_add</mat-icon> Create Invoice
+                </button>
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>list_alt</mat-icon> My Invoices
+                </button>
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>receipt_long</mat-icon> Invoice Details
+                </button>
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>send</mat-icon> Send Invoice
+                </button>
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>article</mat-icon> Invoice Status
+                </button>
+                <button mat-menu-item class="menu-item">
+                  <mat-icon>payments</mat-icon> Invoice Payments
+                </button>
+                <!-- Add more subcategory items with icons -->
+              </mat-menu>
+            </mat-menu>
+          </li>
+
+          <!-- Admin Panel (For Administrators) -->
+          <li mat-menu-item *ngIf="isAdmin">
+            <button
+              mat-button
+              [matMenuTriggerFor]="adminMenu"
+              class="menu-title"
+            >
+              <mat-icon class="menu-icon">admin_panel_settings</mat-icon> Admin
+              Panel
+            </button>
+            <mat-menu #adminMenu="matMenu">
+              <button mat-menu-item class="menu-item">
+                <mat-icon>group</mat-icon> User Management
+              </button>
+              <button mat-menu-item class="menu-item">
+                <mat-icon>build</mat-icon> Service Management
+              </button>
+              <!-- Add more subcategory items with icons -->
+            </mat-menu>
+          </li>
+        </div>
+
+        <!-- Utility Icons -->
+        <div class="utility-icons">
+          <!-- Search Icon -->
+          <button
+            mat-icon-button
+            class="menu-icon"
+            [matMenuTriggerFor]="searchMenu"
+          >
+            <mat-icon>search</mat-icon>
+          </button>
+          <mat-menu #searchMenu="matMenu">
+            <!-- Search submenu items here -->
+          </mat-menu>
+
+          <!-- Notifications Icon -->
+          <button
+            mat-icon-button
+            class="menu-icon"
+            [matMenuTriggerFor]="notificationsMenu"
+          >
+            <mat-icon>notifications</mat-icon>
+          </button>
+          <mat-menu #notificationsMenu="matMenu">
+            <!-- Notifications submenu items here -->
+          </mat-menu>
+
+          <!-- Cart Icon -->
+          <button
+            mat-icon-button
+            class="menu-icon"
+            [matMenuTriggerFor]="cartMenu"
+          >
+            <mat-icon>shopping_cart</mat-icon>
+          </button>
+          <mat-menu #cartMenu="matMenu">
+            <!-- Cart submenu items here -->
+          </mat-menu>
+
+          <!-- Language Selector -->
+          <div class="language-selector compact-selector">
+            <mat-select [(value)]="selectedLanguage" class="menu-title">
+              <mat-option value="en">
+                <img src="us-flag.png" alt="" /> 🇬🇧 | English
+              </mat-option>
+              <!-- Add more language options here -->
+            </mat-select>
+          </div>
+
+          <!-- Currency Selector -->
+          <div class="currency-selector compact-selector">
+            <mat-select [(value)]="selectedCurrency" class="menu-title">
+              <mat-option value="€">€ | Euro</mat-option>
+              <!-- Add more currency options here -->
+            </mat-select>
+          </div>
+
+          <!-- Logout Button -->
+          <button mat-icon-button class="menu-icon">
+            <mat-icon>logout</mat-icon>
+          </button>
+        </div>
+      </mat-toolbar-row>
+    </div>
+  </mat-toolbar-row>
+</header>

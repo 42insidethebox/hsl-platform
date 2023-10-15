@@ -1,24 +1,46 @@
 <!-- Featured Listings Section -->
-<mat-card class="featured-listings">
+<mat-card
+  [ngStyle]="{ width: calculateCardWidth() }"
+  [ngClass]="{ 'featured-listings': isFeaturedListings }"
+  [ngStyle]="{ width: '100%' }"
+>
   <!-- Section Header -->
   <mat-card-header class="featured-listings-header">
-    <mat-card-title>🌟 Featured Listings</mat-card-title>
-    <mat-card-subtitle>
-      <mat-form-field appearance="fill">
-        <mat-label>Sort By</mat-label>
-        <mat-select id="sort-by">
-          <mat-option value="latest">Latest</mat-option>
-          <mat-option value="popular">Most Popular</mat-option>
-          <mat-option value="high-to-low">Price: High to Low</mat-option>
-          <mat-option value="low-to-high">Price: Low to High</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <button mat-raised-button color="primary">
-        <mat-icon>filter_list</mat-icon> Filter
-      </button>
-    </mat-card-subtitle>
-  </mat-card-header>
+    <div class="featured-listings-spacinng">
+      <mat-card-title> 🌟 Featured Listings </mat-card-title>
+      <mat-card-subtitle>
+        <div class="filter-sort-container">
+          <!-- Burger Icon -->
+          <button
+            mat-icon-button
+            (click)="toggleLeftSide()"
+            class="burger-icon"
+          >
+            <mat-icon>dehaze</mat-icon>
+          </button>
 
+          <!-- Sort By Option -->
+          <mat-form-field appearance="fill" class="sort-field">
+            <mat-label>Sort By</mat-label>
+            <mat-select id="sort-by">
+              <mat-option value="latest">Latest</mat-option>
+              <mat-option value="popular">Most Popular</mat-option>
+              <mat-option value="high-to-low">Price: High to Low</mat-option>
+              <mat-option value="low-to-high">Price: Low to High</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- Filter Button -->
+          <button mat-raised-button color="primary" class="filter-button">
+            <mat-icon>filter_list</mat-icon> Filter
+          </button>
+        </div>
+        <button mat-icon-button (click)="toggleRightSide()" class="burger-icon">
+          <mat-icon>dehaze</mat-icon>
+        </button>
+      </mat-card-subtitle>
+    </div>
+  </mat-card-header>
   <!-- Listings Grid -->
   <mat-grid-list [cols]="gridCols" rowHeight="680px">
     <mat-grid-tile *ngFor="let listing of featuredListings">

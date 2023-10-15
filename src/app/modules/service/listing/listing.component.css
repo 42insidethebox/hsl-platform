@@ -1,45 +1,151 @@
 /* Main Container */
 .main-container {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  gap: 20px;
+  grid-template-columns: 240px 1fr auto; /* Left, Middle, Right */
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* Left Side: Advanced Filtering */
 .left-side {
-  grid-column: 1 / 2;
   background-color: #f1f1f1;
   padding: 20px;
   border-radius: 10px;
+  width: 200px !important; /* Remove !important */
+  transition: width 0.5s ease-in-out;
 }
 
 /* Middle: Listings */
 .middle-side {
-  grid-column: 2 / 3;
   background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
+  transition: width 0.5s ease-in-out;
+  flex-grow: 1 !important;
+  display: flex;
 }
 
-/* Right Side: Map and Additional Options */
+.flexible-width {
+  width: 65vw !important;
+}
+
+.main-container.middle-full-width {
+  grid-template-columns: 0px 1fr 0px;
+}
+.main-container.middle-right-visible {
+  grid-template-columns: 0 1fr 1fr;
+}
+.main-container.middle-left-visible {
+  grid-template-columns: 240px 1fr 0;
+}
+.main-container.middle-both-visible {
+  grid-template-columns: auto 1fr auto;
+}
+
+/* Right Side Styles */
 .right-side {
-  grid-column: 3 / 4;
-  display: flex; /* Add flex display to allow children to expand vertically */
-  flex-direction: column; /* Ensure children stack vertically */
-  background-color: #f1f1f1;
   padding: 20px;
-  border-radius: 10px;
+  background-color: #f7f7f7;
+  width: 550px; /* Initial width */
+  max-height: 100%; /* Adjust as per your requirement */
+  overflow-y: auto;
 }
 
-/* Map Container */
-#map-container {
-  flex-grow: 1; /* Allow the map container to expand and fill the available space */
-  position: relative; /* Ensure proper positioning for the map component */
+/* Map Styles */
+h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 16px;
 }
 
-/* Additional Options */
+/* Additional Options Styles */
 .additional-options {
-  /* Add your styles for additional options here */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Filter Sections Styles */
+.date-time-filters,
+.budget-filters,
+.ratings-reviews-filters,
+.location-filters,
+.provider-availability-filters,
+.advanced-search-filters,
+.service-quality-filters,
+.language-filters,
+.additional-requirements {
+  margin-bottom: 20px;
+}
+
+/* Form Group Styles */
+.form-group {
+  margin-bottom: 16px;
+}
+
+/* Label Styles */
+label {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+/* Input Styles */
+.input-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Select Styles */
+.form-control {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Checkbox Styles */
+.form-check-input {
+  margin-right: 8px;
+}
+
+.map-container {
+  flex-grow: 1; /* Allow the map container to expand and fill the available vertical space */
+  position: relative; /* Ensure proper positioning for the map component */
+  width: 500px; /* Set the width to 500px */
+  height: 100%; /* Set the height to 100% to fill the available vertical space */
 }
 
 /* Other styles for checkboxes, radio buttons, etc. can be added as needed */
+/* Media Queries for Standalone */
+@media (max-width: 1600px) {
+  .featured-listings.standalone .listing-card {
+    flex: 0 0 calc(50% - 2rem); /* 2 cards */
+  }
+}
+
+@media (max-width: 1200px) {
+  .featured-listings.standalone .listing-card {
+    flex: 0 0 calc(100% - 2rem); /* 1 card */
+  }
+}
+
+/* Media Queries for Integrated */
+@media (max-width: 1600px) {
+  .featured-listings.integrated .listing-card {
+    /* Your styles for integrated mode at 1600px */
+  }
+}
+
+@media (max-width: 1200px) {
+  .featured-listings.integrated .listing-card {
+    /* Your styles for integrated mode at 1200px */
+  }
+}

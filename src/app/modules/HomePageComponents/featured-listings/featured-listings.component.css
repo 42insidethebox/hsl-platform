@@ -5,11 +5,25 @@
   flex-direction: column;
 }
 
-/* Section Header */
+/* Featured Listings Header */
 .featured-listings-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.featured-listings-spacinng {
+  width: 100%;
+}
+
+.filter-sort-container {
+  width: 100%;
+}
+
+mat-card-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 /* Listings Grid */
@@ -17,9 +31,10 @@ mat-grid-list {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  max-height: 80vh; /* Adjust the height according to your layout */
+  overflow-y: auto;
 }
 
-/* Listing Cards */
 .listing-card {
   display: flex;
   flex-direction: column;
@@ -29,6 +44,9 @@ mat-grid-list {
   margin: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   min-height: 400px;
+  min-width: 300px; /* New */
+  transition: transform 0.3s; /* Added transition for hover effect */
+  cursor: pointer; /* Change cursor to hand pointer on hover */
 }
 
 /* Card Header */
@@ -56,14 +74,34 @@ mat-grid-list {
 .listing-details {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap; /* New */
+  justify-content: center;
   align-items: center;
+  gap: 0.5rem;
+  overflow: auto; /* New */
 }
 
+.listing-details span {
+  display: flex;
+  justify-content: center; /* New */
+  align-items: center; /* New */
+  white-space: nowrap;
+  min-width: 0; /* New */
+}
+
+.listing-details mat-icon {
+  margin-right: 0.5rem;
+  align-self: center; /* New */
+  min-width: 24px; /* New */
+}
 /* User Interactions */
 .mat-card-actions {
   display: flex;
   justify-content: space-between;
+}
+
+mat-card {
+  width: 65vw;
 }
 
 /* Social Proof */
@@ -92,4 +130,35 @@ mat-paginator {
 
   gap: 1rem;
   width: 100%;
+}
+
+.mat-mdc-button > .mat-icon {
+  width: 24px !important;
+}
+
+.left-side.closed,
+.right-side.closed {
+  width: 0px;
+  opacity: 0;
+  visibility: hidden;
+  transition: width 300ms ease-in-out, opacity 300ms ease-in-out,
+    visibility 300ms ease-in-out;
+}
+
+/* Hover Effect */
+.listing-card:hover {
+  transform: scale(1.05); /* Grow the card by 5% when hovered */
+}
+.filter-sort-container {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Adjust the space between elements */
+}
+
+.burger-icon {
+  margin-right: 16px; /* Add some spacing to the right of the burger icon */
+}
+
+.sort-field {
+  margin-right: 16px; /* Add some spacing to the right of the sort field */
 }
