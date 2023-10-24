@@ -141,7 +141,8 @@
   <!-- Middle: Listings -->
   <div class="middle-section">
     <!-- Your existing featured listings code can go here -->
-    <app-featured-listings [isStandalone]="false"></app-featured-listings>
+    <router-outlet></router-outlet>
+    <!-- <app-featured-listings [isStandalone]="false"></app-featured-listings> -->
     <!-- ... -->
   </div>
 
@@ -337,7 +338,7 @@
           <input
             type="checkbox"
             id="service-guarantees"
-            class="form-check-input"
+            class="form-check-input service"
           />
         </div>
       </div>

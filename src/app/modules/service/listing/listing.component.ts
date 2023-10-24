@@ -3,6 +3,7 @@ import {
   Renderer2,
   ElementRef,
   ViewChild,
+  HostListener,
   OnInit,
   OnDestroy,
 } from '@angular/core';
@@ -15,6 +16,10 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+
+import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'app-listing',
   templateUrl: './listing.component.html',
@@ -45,6 +50,18 @@ import {
 export class ListingComponent implements OnInit, OnDestroy {
   isRightSideCollapsed = false;
   isLeftSideCollapsed = false;
+  // Add this variable to your class
+  isSmallScreen: boolean = window.innerWidth < 1000;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.isSmallScreen = (event.target as Window).innerWidth < 1000;
+    if (this.isSmallScreen) {
+      this.sharedService.setRightSideCollapse(true);
+      this.sharedService.setLeftSideCollapse(true);
+    }
+  }
+
   private collapseSubscription: Subscription = new Subscription();
   // Sample data structure for listings (You can replace this with your actual data)
   featuredListings = [
@@ -81,8 +98,11 @@ export class ListingComponent implements OnInit, OnDestroy {
 
   constructor(
     private sharedService: SharedService,
-    private renderer: Renderer2
-  ) {}
+    private renderer: Renderer2,
+    private router: Router
+  ) {
+    console.log('ListingComponent constructor called');
+  }
 
   @ViewChild('mainContainer', { static: false }) mainContainer!: ElementRef;
   ngAfterViewInit() {
@@ -108,8 +128,13 @@ export class ListingComponent implements OnInit, OnDestroy {
         this.isLeftSideCollapsed = state;
       })
     );
+
+    console.log('ListingComponent ngOnInit called');
   }
 
+  navigateToListings() {
+    this.router.navigate(['/listings']);
+  }
   // Function to handle changes in selected industries
   onIndustryChange(event: any): void {
     this.selectedIndustries = event.value;

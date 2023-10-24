@@ -13,7 +13,10 @@
   margin: 0;
   padding: 0;
 }
-
+.service-guarantees {
+  margin-bottom: 250px;
+  border: 2px solid red;
+}
 .social-logins button {
   width: 100%;
   padding: 12px;

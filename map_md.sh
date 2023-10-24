@@ -16,7 +16,7 @@ echo "# Folder Structure of $folder_to_map" > "$output_file"
 # Generate the folder structure while excluding specified directories and files
 find "$folder_to_map" \
   \( -name ".angular" -o -name ".vscode" -o -name "node_modules" -o -name "package-lock.json" \) -prune -o \
-  \( -type d -or \( -type f -and \( -name "*.json" -o -name "*.pug" -o -name "*.css" -o -name "*.js" -o -name "*.png" \) \) \) -print >> "$output_file"
+  \( -type d -or \( -type f -and \( -name "*.json" -o -name "*.pug" -o -name "*.ts" -o -name "*.html" -o -name "*.css" -o -name "*.js" -o -name "*.png" \) \) \) -print >> "$output_file"
 
 # Check if the operation was successful
 if [ $? -eq 0 ]; then

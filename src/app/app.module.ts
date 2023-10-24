@@ -3,22 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoogleMapsModule } from '@angular/google-maps';
-
-// Updated Angular Material Imports
-import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatIconModule } from '@angular/material/icon';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatGridListModule } from '@angular/material/grid-list';
-
-import { MatSelectModule } from '@angular/material/select';
-import { MatButtonModule } from '@angular/material/button';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatOptionModule } from '@angular/material/core'; // Note: MatOptionModule might be under core
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatDividerModule } from '@angular/material/divider'; // Import MatDividerModule
+import { ServiceModule } from './modules/service/service.module';
+import { SharedMaterialModule } from './shared/services/shared-materials.module';
+// Angular Material Imports
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/user/login/login.component';
 import { RegisterComponent } from './modules/user/register/register.component';
@@ -33,7 +20,21 @@ import { HeaderComponent } from './modules/HomePageComponents/header/header.comp
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { appReducer } from './store/app.reducer';
-
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './modules/user/user-routing/home.routes';
+import { TransactionComponent } from './modules/transaction/transaction.component';
+import { TransactionRoutingModule } from './modules/transaction/transaction-routing.module';
+import { BrowseListingsComponent } from './modules/services/browse-listings/browse-listings.component';
+import { CreateListingComponent } from './modules/services/create-listing/create-listing.component';
+import { MyListingsComponent } from './modules/services/my-listings/my-listings.component';
+import { CategoriesComponent } from './modules/services/categories/categories.component';
+import { BookingsComponent } from './modules/services/bookings/bookings.component';
+import { FavoritesComponent } from './modules/services/favorites/favorites.component';
+import { ReviewsComponent } from './modules/services/reviews/reviews.component';
+import { ServicesRoutingModule } from './modules/service/services-routing.module';
+import { UserProfileRoutingModule } from './modules/user/profile/user-profile-routing.module';
+import { AdminPanelRoutingModule } from './modules/admin/admin-routing.module';
+import { MatStepperModule } from '@angular/material/stepper';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,31 +48,39 @@ import { appReducer } from './store/app.reducer';
     ListingComponent,
     MapComponent,
     HeaderComponent,
+    TransactionComponent,
+    BrowseListingsComponent,
+    MyListingsComponent,
+    CategoriesComponent,
+    BookingsComponent,
+    FavoritesComponent,
+    ReviewsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    MatCardModule,
-    MatChipsModule,
     BrowserAnimationsModule,
-    MatIconModule,
-    MatPaginatorModule,
-    MatGridListModule,
-    MatDividerModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatRadioModule,
-    MatCheckboxModule,
-    MatOptionModule,
-    MatToolbarModule,
-    GoogleMapsModule,
-    MatToolbarModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    SharedMaterialModule,
+    MatStepperModule,
+    ServiceModule,
     StoreModule.forRoot({ app: appReducer }),
+    EffectsModule.forRoot([]),
+    AppRoutingModule, // Import the AppRoutingModule
+    RouterModule.forRoot([
+      // Define your routes here
+      { path: '', redirectTo: '/dashboard', pathMatch: 'full' }, // Redirect to dashboard by default
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'listings', component: ListingComponent },
+
+      // Add more routes as needed
+    ]),
+    TransactionRoutingModule,
+    ServicesRoutingModule,
+    UserProfileRoutingModule,
+    AdminPanelRoutingModule,
   ],
+
   providers: [],
   bootstrap: [AppComponent],
 })

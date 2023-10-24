@@ -1,0 +1,73 @@
+/* Variables for reuse */
+:root {
+  --primary-color: #1976d2;
+  --secondary-color: #424242;
+  --font-size-base: 16px;
+}
+
+/* Targeting create-listing-container specifically to avoid style clashes */
+.create-listing-container {
+  font-size: var(--font-size-base);
+  margin: 20px;
+  height: 100vh; /* or any fixed height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  width: 1000px;
+}
+/* Styling the form headings */
+.create-listing-container h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Styling the form fields */
+.create-listing-container mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Styling the input and textarea */
+.create-listing-container input,
+.create-listing-container textarea {
+  font-size: var(--font-size-base);
+}
+
+/* Styling the select dropdowns */
+.create-listing-container mat-select {
+  width: 100%;
+}
+
+/* Styling checkboxes */
+.create-listing-container mat-checkbox {
+  margin: 10px 0;
+}
+
+/* Styling the submit button */
+.create-listing-container button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .create-listing-container {
+    margin: 10px;
+  }
+}
+
+.mat-raised-button {
+  color: black !important;
+}
+
+.description-area {
+  height: 200px !important;
+}

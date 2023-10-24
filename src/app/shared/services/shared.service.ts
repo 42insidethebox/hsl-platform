@@ -28,4 +28,11 @@ export class SharedService {
   get isLeftSideCollapsed(): boolean {
     return this._isLeftSideCollapsed.value;
   }
+  setRightSideCollapse(state: boolean) {
+    this._isRightSideCollapsed.next(state);
+  }
+
+  setLeftSideCollapse(state: boolean) {
+    this._isLeftSideCollapsed.next(state);
+  }
 }
