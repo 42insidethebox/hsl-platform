@@ -1,0 +1,53 @@
+/* Heatmap Section Styles */
+
+.heatmap-section {
+  padding: 20px;
+  background-color: #f5f5f5; /* Light grey background for contrast */
+  border-radius: 5px;
+}
+
+.heatmap-card {
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.heatmap-title {
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #3f51b5; /* Color that matches Angular Material Indigo */
+}
+
+.datepicker-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.mat-form-field {
+  width: 45%; /* To ensure the datepickers take half the width each */
+}
+
+.heatmap-navigation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.heatmap-nav-button {
+  background-color: #3f51b5; /* Color that matches Angular Material Indigo */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.heatmap-nav-button:hover {
+  background-color: #283593; /* Darker shade for hover effect */
+}
+
+.highcharts-chart {
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}

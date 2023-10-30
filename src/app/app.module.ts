@@ -35,6 +35,13 @@ import { ServicesRoutingModule } from './modules/service/services-routing.module
 import { UserProfileRoutingModule } from './modules/user/profile/user-profile-routing.module';
 import { AdminPanelRoutingModule } from './modules/admin/admin-routing.module';
 import { MatStepperModule } from '@angular/material/stepper';
+import { UserInfoComponent } from './modules/HomePageComponents/dashboard/user-info/user-info.component';
+import { UserActivityMetricsComponent } from './modules/HomePageComponents/dashboard/user-activity-metrics/user-activity-metrics.component';
+import { UserBadgesComponent } from './modules/HomePageComponents/dashboard/user-badges/user-badges.component';
+import { EarningsOverviewComponent } from './modules/HomePageComponents/dashboard/earnings-overview/earnings-overview.component';
+import { HistoryTimelineComponent } from './modules/HomePageComponents/dashboard/history-timeline/history-timeline.component';
+import { HeatmapSectionComponent } from './modules/HomePageComponents/dashboard/heatmap-section/heatmap-section.component';
+import { ReviewsSectionComponent } from './modules/HomePageComponents/dashboard/reviews-section/reviews-section.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +62,13 @@ import { MatStepperModule } from '@angular/material/stepper';
     BookingsComponent,
     FavoritesComponent,
     ReviewsComponent,
+    UserInfoComponent,
+    UserActivityMetricsComponent,
+    UserBadgesComponent,
+    EarningsOverviewComponent,
+    HistoryTimelineComponent,
+    HeatmapSectionComponent,
+    ReviewsSectionComponent,
   ],
   imports: [
     BrowserModule,

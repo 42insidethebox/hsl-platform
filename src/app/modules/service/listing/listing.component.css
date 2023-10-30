@@ -25,6 +25,9 @@
   display: flex;
 }
 
+.middle-section {
+  overflow-y: auto !important;
+}
 .flexible-width {
   width: 65vw !important;
 }

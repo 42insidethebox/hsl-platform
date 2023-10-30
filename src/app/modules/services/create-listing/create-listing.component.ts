@@ -8,6 +8,7 @@ import {
   ValidatorFn,
 } from '@angular/forms'; // Import AbstractControl from @angular/forms
 import { oneOf } from 'src/assets/util/oneOf';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
@@ -85,13 +86,13 @@ export class CreateListingComponent implements OnInit {
       ],
       category: ['', [Validators.required]],
       pricing: this.fb.group({
-        model: ['', [Validators.required]],
+        model: ['', [Validators.required, oneOf(PRICING_MODELS)]],
         basePrice: [0, [Validators.required, Validators.min(0)]],
       }),
       duration: this.fb.group({
         value: [1, Validators.required],
-        unit: ['', [Validators.required]],
-        hoursPerDay: [null], // Set to null to match the Mongoose default
+        unit: ['', [Validators.required, oneOf(DURATION_UNITS)]],
+        hoursPerDay: [null, Validators.min(0)], // Added minimum validation
       }),
       availability: this.fb.group({
         calendar: this.fb.array([this.initCalendarDate()]), // Initialize as an array with one date picker
@@ -99,7 +100,7 @@ export class CreateListingComponent implements OnInit {
       }),
 
       location: this.fb.group({
-        type: ['', [Validators.required]], // Make sure this line exists
+        type: ['', [Validators.required, oneOf(LOCATION_TYPES)]],
         serviceArea: [''], // Make sure this line exists
       }),
       media: this.fb.array([this.initMediaSection()]), // Initialize with one empty media section
@@ -114,11 +115,16 @@ export class CreateListingComponent implements OnInit {
       currency: [''],
       validation: [false],
       fileUploads: [false],
-      stripePayment: ['Pending', [Validators.required]],
-      contactButton: [true],
-      reportListing: [false], // Set to false to match the Mongoose default
-      bookmarkListing: [false], // Set to false to match the Mongoose default
-      reviews: this.fb.array([]), // Include reviews field with an empty FormArray
+      stripePayment: [
+        'Pending',
+        [Validators.required, oneOf(PAYMENT_STATUSES)],
+      ],
+      cancellationPolicy: this.initCancellationPolicy(),
+      userId: ['', Validators.required],
+      tags: this.fb.array([], [Validators.maxLength(10)]), // Assuming a limit of 10 tags
+
+      certifications: this.fb.array([]),
+      externalReviews: this.fb.array([]),
     });
   }
   // Custom method to check if a form control has errors
@@ -151,14 +157,17 @@ export class CreateListingComponent implements OnInit {
         serviceArea: '',
       },
       media: {
-        images: [],
-        videos: [],
+        mediaFiles: [
+          {
+            type: String, // e.g., "image", "video", "document"
+            url: String, // Link to the hosted media
+          },
+        ],
       },
       attachments: {
         documents: [],
         photos: [],
       },
-      reviews: this.fb.array([]), // Initialize as an empty FormArray of strings
       requirements: this.fb.array<string>([]),
       toolsEquipment: this.fb.array<string>([]),
       qualifications: this.fb.array<string>([]),
@@ -168,7 +177,6 @@ export class CreateListingComponent implements OnInit {
       validation: false,
       fileUploads: false,
       stripePayment: 'Pending',
-      contactButton: true,
       reportListing: false,
       bookmarkListing: false,
     });
@@ -183,10 +191,6 @@ export class CreateListingComponent implements OnInit {
     }
   }
 
-  get reviewsArray() {
-    return this.listingForm.get('reviews') as FormArray;
-  }
-
   // Additional properties and methods for the media section
 
   initFileField(): FormGroup {
@@ -195,13 +199,18 @@ export class CreateListingComponent implements OnInit {
     });
   }
 
+  totalFileSize = 0; // Track the total size of uploaded files
+
   fileValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
-      const file = control.value;
-      const fileSize = file?.size; // File size in bytes
+      const file = control.value as File;
+      const fileSize = file?.size || 0; // File size in bytes
       const fileType = file?.type; // MIME type
-      if (fileSize > 10 * 1024 * 1024) {
-        return { fileSize: true };
+
+      this.totalFileSize += fileSize;
+
+      if (this.totalFileSize > 25 * 1024 * 1024) {
+        return { totalFileSize: true };
       }
       if (
         fileType !== 'image/jpeg' &&
@@ -215,16 +224,16 @@ export class CreateListingComponent implements OnInit {
   }
 
   // Initialize media section
-  initMediaSection(): FormGroup {
-    return this.fb.group({
-      images: this.fb.array([
-        this.initFileField().setValidators([this.fileValidator()]),
-      ]),
-      videos: this.fb.array([
-        this.initFileField().setValidators([this.fileValidator()]),
-      ]),
-    });
-  }
+  // initMediaSection(): FormGroup {
+  //   return this.fb.group({
+  //     images: this.fb.array([
+  //       this.initFileField().setValidators([this.fileValidator()]),
+  //     ]),
+  //     videos: this.fb.array([
+  //       this.initFileField().setValidators([this.fileValidator()]),
+  //     ]),
+  //   });
+  // }
   initCalendarDate(): FormGroup {
     return this.fb.group({
       date: [null, Validators.required],
@@ -258,5 +267,75 @@ export class CreateListingComponent implements OnInit {
 
   goForward(stepper: MatStepper) {
     stepper.next();
+  }
+
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const mediaGroup = this.initMediaSection();
+        if (file.type.startsWith('image')) {
+          mediaGroup.get('type')?.setValue('image');
+        } else if (file.type.startsWith('video')) {
+          mediaGroup.get('type')?.setValue('video');
+        }
+        mediaGroup.get('url')?.setValue(e.target.result); // This would be the data URL for preview
+        mediaGroup.get('file')?.setValue(file); // Store the actual File object
+        (this.listingForm.get('media') as FormArray).push(mediaGroup);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  onDrop(event: CdkDragDrop<any>) {
+    const media = this.listingForm.get('media') as FormArray;
+    moveItemInArray(media.controls, event.previousIndex, event.currentIndex);
+  }
+
+  addMediaField(): void {
+    const media = this.listingForm.get('media') as FormArray;
+    media.push(this.initMediaSection());
+  }
+
+  removeMedia(index: number): void {
+    const media = this.listingForm.get('media') as FormArray;
+    const file: File = media.at(index).get('file')?.value;
+    this.totalFileSize -= file?.size || 0;
+    media.removeAt(index);
+  }
+  initMediaSection(): FormGroup {
+    return this.fb.group({
+      type: [''], // 'image' or 'video'
+      url: [''], // data URL for preview
+      file: [null, [this.fileValidator()]], // the actual File object
+    });
+  }
+
+  initCancellationPolicy(): FormGroup {
+    return this.fb.group({
+      type: [
+        '',
+        [
+          Validators.required,
+          oneOf(['Flexible', 'Moderate', 'Strict', 'Custom']),
+        ],
+      ],
+      refundPercentageBeforeServiceDate: [null, Validators.min(0)],
+      refundPercentageOnServiceDate: [null, Validators.min(0)],
+      reschedulingAllowed: [true],
+      reschedulingFee: [0, Validators.min(0)],
+    });
+  }
+  // Add a new tag control to the tags FormArray
+  addTag(): void {
+    const tags = this.listingForm.get('tags') as FormArray;
+    tags.push(this.fb.control('', Validators.required));
+  }
+
+  // Remove a tag control from the tags FormArray by index
+  removeTag(index: number): void {
+    const tags = this.listingForm.get('tags') as FormArray;
+    tags.removeAt(index);
   }
 }

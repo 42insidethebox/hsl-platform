@@ -37,6 +37,62 @@ const DurationSchema = new mongoose.Schema({
   },
 });
 
+const CancellationPolicySchema = new mongoose.Schema({
+  type: {
+    type: String,
+    enum: ["Flexible", "Moderate", "Strict", "Custom"],
+    required: true,
+  },
+  refundPercentageBeforeServiceDate: {
+    type: Number,
+    min: 0,
+    max: 100,
+    default: function () {
+      switch (this.type) {
+        case "Flexible":
+          return 100;
+        case "Moderate":
+          return 50;
+        case "Strict":
+          return 0;
+        default:
+          return null; // For 'Custom', this will be required but no default
+      }
+    },
+  },
+  refundPercentageOnServiceDate: {
+    type: Number,
+    min: 0,
+    max: 100,
+    default: function () {
+      switch (this.type) {
+        case "Flexible":
+          return 100;
+        case "Moderate":
+          return 0;
+        case "Strict":
+          return 0;
+        default:
+          return null; // For 'Custom', this will be required but no default
+      }
+    },
+  },
+  reschedulingAllowed: {
+    type: Boolean,
+    default: function () {
+      if (this.type === "Strict") return false;
+      return true;
+    },
+  },
+  reschedulingFee: {
+    type: Number,
+    min: 0,
+    default: function () {
+      if (this.type === "Moderate") return 10; // Example fee value
+      return 0;
+    },
+  },
+});
 // Main CreateListing Schema
 const CreateListingSchema = new mongoose.Schema({
   title: {
@@ -76,8 +132,14 @@ const CreateListingSchema = new mongoose.Schema({
     serviceArea: String,
   },
   media: {
-    images: [String],
-    videos: [String],
+    mediaFiles: [
+      {
+        type: String, // 'image' or 'video'
+        filename: String,
+        mimetype: String,
+        path: String,
+      },
+    ],
   },
   attachments: {
     documents: [String],
@@ -114,6 +176,27 @@ const CreateListingSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User", // Assuming your user model is named "User"
+    required: true,
+  },
+  tags: {
+    type: [String],
+    validate: {
+      validator: function (v) {
+        return v.length <= 10; // Assuming a limit of 10 tags
+      },
+      message: (props) =>
+        `Too many tags! Maximum is 10, but got ${props.value.length}`,
+    },
+  },
+  cancellationPolicy: {
+    type: CancellationPolicySchema,
+    required: true,
+  },
+  certifications: [String], // URLs or file paths
+  externalReviews: [String], // URLs to external review sites
 });
 
 const CreateListing = mongoose.model("CreateListing", CreateListingSchema);

@@ -14,6 +14,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { SharedMaterialModule } from 'src/app/shared/services/shared-materials.module';
 import { MatStepperModule } from '@angular/material/stepper';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatChipsModule } from '@angular/material/chips';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { HighchartsChartModule } from 'highcharts-angular';
 @NgModule({
   declarations: [BookingComponent, CreateListingComponent],
   imports: [
@@ -30,7 +34,16 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatButtonModule,
     SharedMaterialModule,
     MatStepperModule,
+    MatChipsModule,
+    DragDropModule,
+    NgxChartsModule,
+    HighchartsChartModule,
   ],
-  exports: [MatStepperModule],
+  exports: [
+    MatStepperModule,
+    MatChipsModule,
+    NgxChartsModule,
+    HighchartsChartModule,
+  ],
 })
 export class ServiceModule {}

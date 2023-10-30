@@ -1,0 +1,47 @@
+<section class="heatmap-section mat-elevation-z2">
+  <mat-card class="heatmap-card">
+    <!-- Heatmap Title -->
+    <h2 class="heatmap-title mat-h2">Monthly Availability</h2>
+    <!-- Datepicker Controls -->
+    <div class="datepicker-controls">
+      <mat-form-field>
+        <input
+          matInput
+          [matDatepicker]="startDatePicker"
+          placeholder="Start Date"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="startDatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #startDatePicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          [matDatepicker]="endDatePicker"
+          placeholder="End Date"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="endDatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #endDatePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <!-- Heatmap Navigation -->
+    <div class="heatmap-navigation">
+      <button class="heatmap-nav-button mat-button">Previous Month</button>
+      <button class="heatmap-nav-button mat-button">Next Month</button>
+    </div>
+  </mat-card>
+
+  <!-- Highcharts Chart -->
+  <highcharts-chart
+    [Highcharts]="Highcharts"
+    [options]="heatmapOptions"
+    style="width: 100%; height: 800px; display: block"
+  ></highcharts-chart>
+</section>
