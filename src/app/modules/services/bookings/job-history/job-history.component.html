@@ -1,0 +1,82 @@
+<div class="job-history-content">
+  <!-- Job History Table -->
+  <mat-table [dataSource]="jobHistory" class="mat-elevation-z8 mat-job-history">
+    <!-- Job Date Column -->
+    <ng-container class=".mdc-job-history" matColumnDef="jobDate">
+      <mat-header-cell class=".mdc-job-history" *matHeaderCellDef>
+        Date
+      </mat-header-cell>
+      <mat-cell class=".mdc-job-history" *matCellDef="let job">
+        {{ job.jobDate }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Job Description Column -->
+    <ng-container class=".mdc-job-history" matColumnDef="description">
+      <mat-header-cell class=".mdc-job-history" *matHeaderCellDef>
+        Description
+      </mat-header-cell>
+      <mat-cell class=".mdc-job-history" *matCellDef="let job">
+        {{ job.description }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Amount Charged Column -->
+    <ng-container class=".mdc-job-history" matColumnDef="amount">
+      <mat-header-cell class=".mdc-job-history" *matHeaderCellDef>
+        Amount ($)
+      </mat-header-cell>
+      <mat-cell class=".mdc-job-history" *matCellDef="let job">
+        {{ job.amount }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Duration Column -->
+    <ng-container class=".mdc-job-history" matColumnDef="duration">
+      <mat-header-cell class=".mdc-job-history" *matHeaderCellDef>
+        Duration (hrs)
+      </mat-header-cell>
+      <mat-cell class=".mdc-job-history" *matCellDef="let job">
+        {{ job.duration }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Rating Column -->
+    <ng-container class=".mdc-job-history" matColumnDef="rating">
+      <mat-header-cell class=".mdc-job-history" *matHeaderCellDef>
+        Rating
+      </mat-header-cell>
+      <mat-cell class=".mdc-job-history" *matCellDef="let job">
+        {{ job.rating }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container class=".mdc-job-history" matColumnDef="status">
+      <mat-header-cell class=".mdc-job-history" *matHeaderCellDef>
+        Status
+      </mat-header-cell>
+      <mat-cell *matCellDef="let job"> {{ job.status }} </mat-cell>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container class=".mdc-job-history" matColumnDef="actions">
+      <mat-header-cell class=".mdc-job-history" *matHeaderCellDef>
+        Actions
+      </mat-header-cell>
+      <mat-cell class=".mdc-job-history" *matCellDef="let job">
+        <!-- View Job Report -->
+        <button mat-icon-button matTooltip="View Job Report">
+          <mat-icon>description</mat-icon>
+        </button>
+        <!-- Reschedule Job -->
+        <button mat-icon-button matTooltip="Reschedule">
+          <mat-icon>calendar_today</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+</div>

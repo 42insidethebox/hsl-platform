@@ -1,0 +1,173 @@
+<!-- Financials & Payments Content -->
+<div class="financials-payments-content">
+  <!-- Payment Management Card -->
+  <mat-card class="payment-management-card">
+    <mat-card-header>
+      <mat-card-title>Payment Management</mat-card-title>
+      <mat-card-subtitle
+        >Understand how this job's payment is managed.</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <mat-icon>payment</mat-icon>
+      <p>Payment Managed by [Us/Worker's Name]</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>Register Cash Payment</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <!-- Payment Methods Card -->
+  <mat-card class="payment-methods-card">
+    <mat-card-header>
+      <mat-card-title>Payment Methods</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="payment-methods">
+        <mat-icon>credit_card</mat-icon> Credit Card
+        <mat-icon>account_balance_wallet</mat-icon> PayPal
+        <mat-icon>account_balance</mat-icon> BTC
+        <mat-icon>phone_android</mat-icon> Mobile Wallet
+      </div>
+    </mat-card-content>
+    <mat-card-actions> </mat-card-actions>
+  </mat-card>
+
+  <mat-accordion class="financials-accordion">
+    <!-- Transaction Details Panel -->
+    <mat-expansion-panel
+      class="transaction-details-panel"
+      id="transactionDetailsPanel"
+    >
+      <mat-expansion-panel-header class="transaction-details-header">
+        <mat-panel-title class="transaction-details-title">
+          View Transaction Details
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="transaction-details-content" id="transactionDetailsContent">
+        <span class="transaction-id-label"
+          ><strong>Transaction ID:</strong> [ID]</span
+        >
+        <span class="transaction-date-label"
+          ><strong>Date & Time:</strong> [DateTime]</span
+        >
+        <span class="payment-method-label"
+          ><strong>Payment Method:</strong> [Method]</span
+        >
+        <span class="payment-status-label"
+          ><strong>Payment Status:</strong> [Status]</span
+        >
+        <span class="payer-info-label"
+          ><strong>Payer Information:</strong> [PayerInfo]</span
+        >
+        <span class="recipient-info-label"
+          ><strong>Recipient Information:</strong> [RecipientInfo]</span
+        >
+        <span class="transaction-notes-label"
+          ><strong>Notes:</strong> [MiscellaneousNotes]</span
+        >
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <!-- Job Payment Status Card -->
+  <mat-card class="payment-status-card">
+    <mat-card-header>
+      <mat-card-title>Job Payment Status</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-icon>pending_actions</mat-icon>
+      <p>Payment Status: [Pending/Completed/Refunded]</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <mat-accordion class="mat-accordion-payment">
+        <mat-expansion-panel
+          class="payment-breakdown-panel"
+          id="paymentBreakdownPanel"
+        >
+          <mat-expansion-panel-header class="payment-breakdown-header">
+            <mat-panel-title class="payment-breakdown-title">
+              View Payment Breakdown
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <!-- Content for Payment Breakdown -->
+          <div class="payment-breakdown-content" id="paymentBreakdownContent">
+            <span class="base-pay-label"
+              ><strong>Base Pay:</strong> [BasePay]</span
+            >
+            <span class="bonuses-label"
+              ><strong>Bonuses or Tips:</strong> [Bonuses]</span
+            >
+            <span class="deductions-label"
+              ><strong>Deductions:</strong> [Deductions]</span
+            >
+            <span class="total-amount-label"
+              ><strong>Total Amount:</strong> [Total]</span
+            >
+            <span class="taxes-label"><strong>Taxes:</strong> [TaxAmount]</span>
+            <span class="misc-charges-label"
+              ><strong>Miscellaneous Charges:</strong> [MiscCharges]</span
+            >
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card-actions>
+  </mat-card>
+
+  <!-- Invoice & Commission System Card -->
+  <mat-card class="invoice-commission-card">
+    <mat-card-header>
+      <mat-card-title>Invoice & Commission</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Total Payment: $[Amount]</p>
+      <p>Commission Rate: [Rate]%</p>
+      <p>Deductions: $[Amount]</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <mat-accordion class="view-detail"></mat-accordion>
+    </mat-card-actions>
+  </mat-card>
+
+  <!-- Cancellation & Refund Policy Card -->
+  <mat-card class="cancellation-policy-card">
+    <mat-card-header>
+      <mat-card-title>Cancellation & Refund Policy</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Policy Details...</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <mat-accordion class="mat-full-policy">
+        <!-- Full Policy Panel -->
+        <mat-expansion-panel class="full-policy-panel" id="fullPolicyPanel">
+          <mat-expansion-panel-header class="full-policy-header">
+            <mat-panel-title class="full-policy-title">
+              View Full Policy
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <!-- Content for Full Policy -->
+          <div class="full-policy-content" id="fullPolicyContent">
+            <span class="cancellation-policy-label"
+              ><strong>Cancellation Policy:</strong>
+              [CancellationPolicyDetails]</span
+            >
+            <span class="refund-conditions-label"
+              ><strong>Refund Conditions:</strong> [RefundConditions]</span
+            >
+            <span class="penalties-label"
+              ><strong>Penalties:</strong> [Penalties]</span
+            >
+            <span class="timeframes-label"
+              ><strong>Timeframes:</strong> [Timeframes]</span
+            >
+            <span class="contact-info-label"
+              ><strong>Contact Information:</strong> [ContactInfo]</span
+            >
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card-actions>
+  </mat-card>
+</div>

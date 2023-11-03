@@ -1,0 +1,18 @@
+::ng-deep .mat-job-history {
+  background-color: #fff !important;
+
+  color: #333 !important;
+}
+::ng-deep .mat-mdc-header-cell,
+::ng-deep .mdc-data-table__cell {
+  color: #333 !important;
+  padding: 0rem 2rem !important;
+}
+
+::ng-deep .mdc-data-table__table {
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  width: 100%;
+  flex-wrap: wrap;
+}

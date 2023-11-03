@@ -1,0 +1,6 @@
+.map-container {
+  flex-grow: 1; /* Allow the map container to expand and fill the available vertical space */
+  position: relative; /* Ensure proper positioning for the map component */
+  width: auto; /* Set the width to 500px */
+  height: 100% !important; /* Set the height to 100% to fill the available vertical space */
+}

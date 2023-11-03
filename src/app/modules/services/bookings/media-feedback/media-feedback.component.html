@@ -1,0 +1,67 @@
+<div class="media-feedback-content">
+  <!-- Media Gallery Section -->
+  <section class="media-gallery">
+    <h2>Media Gallery</h2>
+    <div *ngIf="jobMedia.length; else noMedia">
+      <article class="media-item" *ngFor="let media of jobMedia">
+        <!-- Image Thumbnail -->
+        <figure class="thumbnail">
+          <img [src]="media.thumbnailUrl" alt="Media Thumbnail" />
+          <figcaption>Click to view in detail</figcaption>
+        </figure>
+        <!-- Media Metadata -->
+        <div class="media-metadata">
+          <p><strong>Uploaded on:</strong> {{ media.uploadDate }}</p>
+          <p><strong>Uploaded by:</strong> {{ media.uploader }}</p>
+        </div>
+      </article>
+    </div>
+    <ng-template #noMedia>
+      <p>No media available for this job.</p>
+    </ng-template>
+  </section>
+
+  <!-- TODO: Insert File Upload Section here -->
+
+  <!-- Client and Provider Feedback Section -->
+  <section class="feedback-container">
+    <h2>Client & Provider Feedback</h2>
+    <div *ngIf="jobFeedback.length; else noFeedback">
+      <article class="feedback-item" *ngFor="let feedback of jobFeedback">
+        <!-- Star Ratings & Review -->
+        <div class="star-ratings">
+          <mat-icon
+            *ngFor="
+              let _ of [].constructor(feedback.starRatings);
+              let i = index
+            "
+            >star</mat-icon
+          >
+        </div>
+        <blockquote class="review">{{ feedback.review }}</blockquote>
+        <!-- Respond to Feedback Button -->
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="respondToFeedback(feedback)"
+        >
+          Respond
+        </button>
+      </article>
+    </div>
+    <ng-template #noFeedback>
+      <p>No feedback available for this job.</p>
+    </ng-template>
+
+    <!-- Feedback Filtering Options -->
+    <div class="feedback-filter">
+      <mat-form-field appearance="fill">
+        <mat-label>Filter Feedback By</mat-label>
+        <mat-select>
+          <mat-option value="date">Date</mat-option>
+          <mat-option value="rating">Rating</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </section>
+</div>

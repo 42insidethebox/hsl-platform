@@ -1,0 +1,238 @@
+<mat-dialog-content class="worker-modal">
+  <!-- Main Content Wrapper -->
+  <div class="content-wrapper">
+    <!-- Left Pane: Map -->
+    <!-- Map Container: Display only if 'mapView' is true -->
+    <div *ngIf="mapView" class="map-container" style="width: 100%">
+      <app-map-bookings></app-map-bookings>
+    </div>
+
+    <!-- Right Pane: Display only if 'mapView' is false -->
+    <div *ngIf="!mapView" class="right-pane">
+      <!-- ... (your existing right pane content) ... -->
+    </div>
+
+    <!-- Central Pane: Current Jobs & Commitments -->
+
+    <!-- Right Pane: Advanced Tools and Quick Links -->
+    <div class="right-pane">
+      <!-- Performance Analytics Card -->
+      <div class="performance-analytics-card"></div>
+
+      <!-- Quick Actions Menu -->
+      <!-- Quick Actions Menu -->
+      <mat-menu class="quick-actions-menu" #menu="matMenu">
+        <button mat-menu-item class="quick-action">View Earnings</button>
+        <button mat-menu-item class="quick-action">Provide Feedback</button>
+        <button mat-menu-item class="quick-action">Settings</button>
+        <button
+          mat-menu-item
+          (click)="toggleAvailability()"
+          class="quick-action"
+        >
+          Toggle Availability
+          <mat-icon>{{ availability ? "toggle_on" : "toggle_off" }}</mat-icon>
+        </button>
+        <button mat-menu-item class="quick-action" (click)="openTemplates()">
+          My Templates
+        </button>
+        <mat-divider></mat-divider>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="menu" style="color: rgb(0, 0, 0)">
+        Quick Actions
+      </button>
+
+      <!-- Urgent Alerts -->
+      <div class="urgent-alerts">
+        <button mat-raised-button color="warn" (click)="triggerUrgentAlert()">
+          Trigger Urgent Alert
+        </button>
+      </div>
+
+      <mat-accordion>
+        <!-- Active Jobs Panel -->
+        <!-- Active Jobs Panel -->
+        <mat-expansion-panel class="active-jobs-panel">
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              class="active-jobs-title"
+              (click)="toggleActiveJobs()"
+            >
+              Active Jobs
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <!-- Regular Active Jobs (activeJobs) -->
+          <div
+            class="job-card"
+            *ngFor="let job of activeJobs"
+            (click)="selectJob(job)"
+          >
+            <!-- Display active job details -->
+            <div class="job-card-details">{{ job.clientName }}</div>
+            <div class="job-card-details">{{ job.serviceRequest }}</div>
+            <div class="job-card-details">{{ job.time }}</div>
+            <div class="job-card-details">{{ job.distance }}</div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <!-- Dynamic Job Details Pane (Initially hidden) -->
+      <div class="job-details-pane" *ngIf="selectedJob">
+        <!-- Tabbed Navigation -->
+        <mat-tab-group #tabGroup>
+          <!-- Tab 1: Job Details -->
+          <mat-tab label="Job Details">
+            <div class="tab-content">
+              <!-- Client Information -->
+              <mat-card class="client-card">
+                <mat-card-header>
+                  <div mat-card-avatar class="client-avatar"></div>
+                  <mat-card-title>{{ selectedJob.clientName }}</mat-card-title>
+
+                  <mat-card-subtitle class="client-id"
+                    >Contact: {{ selectedJob.clientId }}</mat-card-subtitle
+                  >
+                </mat-card-header>
+                <mat-card-content>
+                  <!-- Client Contact Information -->
+                  <div class="client-contact">
+                    <div class="contact-item job-info-item">
+                      <mat-icon class="contact-icon">email</mat-icon>
+                      <span>Email: {{ selectedJob.clientEmail }}</span>
+                    </div>
+                    <div class="contact-item job-info-item">
+                      <mat-icon class="contact-icon">phone</mat-icon>
+                      <span>Phone: {{ selectedJob.clientPhone }}</span>
+                    </div>
+                    <!-- Add more contact information as needed -->
+                  </div>
+                </mat-card-content>
+              </mat-card>
+
+              <!-- Job Information -->
+              <mat-card class="job-info-card">
+                <mat-card-content>
+                  <div class="job-info">
+                    <div class="job-info-item">
+                      <mat-icon class="info-icon">assignment</mat-icon>
+                      <span
+                        >Service Request: {{ selectedJob.serviceRequest }}</span
+                      >
+                    </div>
+                    <div class="job-info-item">
+                      <mat-icon class="info-icon">schedule</mat-icon>
+                      <span>Date & Time: {{ selectedJob.time }}</span>
+                    </div>
+                    <div class="job-info-item">
+                      <mat-icon class="info-icon">location_on</mat-icon>
+                      <span>Location: {{ selectedJob.location }}</span>
+                    </div>
+                    <!-- Add more job information as needed -->
+                  </div>
+                </mat-card-content>
+              </mat-card>
+
+              <!-- Job Actions -->
+              <div class="job-actions">
+                <button mat-icon-button matTooltip="Start Timer">
+                  <mat-icon class="action-icon">timer</mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="Mark as Completed">
+                  <mat-icon class="action-icon">check_circle</mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="Initiate Dispute">
+                  <mat-icon class="action-icon">gavel</mat-icon>
+                </button>
+                <!-- Cancellation Policies Icon with Dynamic Tooltip -->
+                <button
+                  mat-icon-button
+                  [matTooltip]="cancellationTooltip"
+                  (click)="showCancellationPolicies()"
+                >
+                  <mat-icon class="action-icon">policy</mat-icon>
+                </button>
+              </div>
+
+              <!-- Job Status -->
+              <mat-progress-bar
+                mode="determinate"
+                [value]="jobStatus"
+                class="job-progress"
+              ></mat-progress-bar>
+            </div>
+          </mat-tab>
+
+          <!-- Tab 2: Communication Hub -->
+          <mat-tab class="communication-hub"label="Communication Hub">
+            <app-real-time-chat></app-real-time-chat>
+          </mat-tab>
+
+          <!-- Tab 3: Media and Feedback -->
+          <mat-tab label="Media & Feedback">
+            <app-media-feedback></app-media-feedback>
+          </mat-tab>
+
+          <mat-tab label="Job History">
+            <app-job-history></app-job-history>
+          </mat-tab>
+
+          <mat-tab label="Financial Payments">
+            <app-financial-payments></app-financial-payments>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+      <!-- Earnings Estimator -->
+      <div class="earnings-estimator">
+        Potential Earnings: ${{ estimatedEarnings }}
+        <a (click)="showPaymentDetails()">See Breakdown</a>
+      </div>
+
+      <!-- Safety Features -->
+      <!-- Safety Features -->
+      <div class="safety-features">
+        <button
+          mat-icon-button
+          (click)="initiateChatWithSupport()"
+          matTooltip="Chat with Support"
+          matTooltipClass="custom-tooltip"
+        >
+          <mat-icon>headset_mic</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          (click)="reportIncident()"
+          matTooltip="Report an Incident"
+          matTooltipClass="custom-tooltip"
+        >
+          <mat-icon>report_problem</mat-icon>
+        </button>
+      </div>
+
+      <!-- Goal Setting -->
+      <div class="goal-setting">
+        <mat-progress-bar
+          mode="determinate"
+          [value]="goalProgress"
+        ></mat-progress-bar>
+        Goal: ${{ goalAmount }} ({{ goalTimeFrame }})
+      </div>
+
+      <!-- Weather Forecasts -->
+      <div class="weather-forecast">
+        <mat-icon>weather</mat-icon>
+        {{ weatherCondition }} | {{ temperature }}°C
+      </div>
+
+      <!-- Job Swap -->
+      <div class="job-swap">
+        <!-- Add job swap-related content here -->
+      </div>
+    </div>
+  </div>
+  <div class="toggle-icon-container">
+    <button mat-icon-button (click)="toggleView()">
+      <mat-icon style="font-size: 1.8rem; color: white">swap_horiz</mat-icon>
+    </button>
+  </div>
+</mat-dialog-content>

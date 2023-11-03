@@ -1,0 +1,58 @@
+.earnings-wrapper {
+  display: flex;
+  width: 100%;
+  overflow-y: auto;
+  justify-content: center;
+}
+#earnings-overview {
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 5px;
+  background-color: #fff;
+}
+#earnings-overview {
+  width: 100vw !important;
+  overflow-x: auto; /* to allow horizontal scrolling if needed */
+}
+
+.toggle-controls {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.dark-mode-toggle,
+.data-filters {
+  text-align: right;
+  margin-top: 1em;
+}
+
+.error-message {
+  text-align: center;
+  color: #d9534f;
+  font-weight: bold;
+}
+
+.error-message mat-icon {
+  vertical-align: middle;
+}
+
+.dark-mode-chart {
+  background-color: #272727; /* Dark background for the chart area */
+  color: #e0e0e3; /* Light text color for any labels or annotations */
+}
+
+.dark-mode {
+  background-color: #272727;
+  color: #e0e0e3;
+}
+
+/* Additional styling for specific elements within the chart area if needed */
+.dark-mode-chart .chart-title {
+  color: #e0e0e3;
+}
+
+.dark-mode-chart .chart-label {
+  color: #b0b0b3;
+}

@@ -1,0 +1,344 @@
+* {
+  color: #333;
+}
+/* Main Modal Style */
+.worker-modal {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 50px);
+  top: 50px;
+  left: 0;
+  background-color: rgb(29, 24, 43);
+  overflow: hidden;
+  z-index: 999;
+}
+
+.right-pane {
+  background-color: #eee;
+}
+
+/* Main Content Wrapper */
+.content-wrapper {
+  display: flex;
+  height: calc(100% - 60px); /* Subtracting the height of top-navigation */
+}
+
+/* Map Container */
+.map-container {
+  flex: 2;
+  border-right: 1px solid white;
+}
+
+/* Job Cards Container */
+.job-cards-container {
+  flex: 3;
+  padding: 20px;
+}
+
+/* Right Pane for Recommendations, Quick Actions, Analytics, etc. */
+.right-pane {
+  flex: 2;
+  border-left: 1px solid white;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Styling for Job Cards */
+/* Styling for Job Cards */
+/* Styling for Job Cards with Animation */
+/* Define a fade-in-out animation */
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: translateY(-5px); /* Move the card up */
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0); /* Restore its position */
+  }
+}
+
+/* Styling for Job Cards with Infinite Animation Loop */
+.job-card {
+  background-color: rgba(255, 255, 255, 1);
+  color: rgb(0, 0, 0);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  animation: fadeInOut 3s ease-in-out infinite; /* Apply the infinite fade-in-out animation */
+  cursor: pointer;
+}
+
+/* Define a fade-in animation */
+
+/* Additional Styles as per your previous design might go here */
+/* General Styles */
+.worker-modal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content-wrapper {
+  display: flex;
+  flex: 1;
+}
+
+/* Map */
+.map-container {
+  flex: 4; /* 80% */
+  height: 100%;
+  width: 100%;
+}
+
+/* Sidebar */
+.right-pane {
+  flex: 1; /* 20% */
+  height: 100%;
+  overflow-y: auto; /* For scrolling if content exceeds viewport height */
+  min-width: 450px;
+}
+::ng-deep .mat-mdc-tab-body-content {
+  height: auto !important;
+}
+
+/* Adjust the size of other elements if needed */
+.top-navigation,
+.bottom-bar {
+  height: 50px; /* Example height, adjust as needed */
+}
+
+/* Right Pane Components Styling */
+
+/* Performance Analytics Card */
+.performance-analytics-card {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Slight transparency for depth */
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Quick Actions Menu */
+.quick-actions-menu {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Urgent Alerts */
+.urgent-alerts {
+  background-color: rgba(255, 0, 0, 0.1); /* Slight red tint for urgency */
+  color: red;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Earnings Estimator */
+.earnings-estimator {
+  background-color: rgba(
+    0,
+    128,
+    0,
+    0.1
+  ); /* Slight green tint for earnings positivity */
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  margin-top: 10rem;
+}
+
+/* Safety Features */
+.safety-features {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Goal Setting */
+.goal-setting {
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+.goal-form {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  background-color: #eee;
+}
+/* Weather Forecast */
+.weather-forecast {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Job Swap */
+.job-swap {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* For Icons inside the right pane components */
+.right-pane mat-icon {
+  margin-right: 10px;
+}
+
+@media (max-width: 968px) {
+  /* Adjust breakpoint as needed */
+  .content-wrapper {
+    flex-direction: column;
+  }
+
+  .map-container {
+    flex: 1;
+    height: 50%; /* Adjust this if you want the map to occupy more or less space */
+  }
+
+  .right-pane {
+    height: 50%; /* Adjust this if you want the sidebar to occupy more or less space */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+  }
+
+  .top-navigation,
+  .bottom-bar {
+    height: 50px; /* Example height, adjust as needed */
+  }
+}
+
+/* Setting the text color of every mat-menu-item inside .quick-actions-menu to black */
+.quick-action,
+.quick-action,
+.quick-action {
+  color: #000;
+}
+
+.active-jobs-panel {
+  background-color: #f2f2f2;
+}
+
+.active-jobs-title {
+  color: #333;
+}
+
+.job-details-pane {
+  color: #333;
+}
+/* Custom styles for the active tab label */
+/* Custom styles for the active tab label */
+/* Custom styles for the active tab label */
+
+::ng-deep .mdc-tab__text-label {
+  color: #333 !important;
+}
+::ng-deep .mdc-tab__text-label:hover {
+  color: #3f51b5 !important;
+}
+
+::ng-deep .mat-mdc-tab-header-pagination-chevron {
+  border-color: rgb(0, 0, 0) !important;
+}
+
+::ng-deep .job-info-item {
+  color: #333 !important;
+}
+::ng-deep .job-info-item > * {
+  color: rgb(0, 0, 0) !important;
+}
+
+::ng-deep .tab-content {
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  gap: 5rem;
+}
+::ng-deep .job-info-card,
+.mat-mdc-card-content,
+.client-card {
+  background-color: #f5f5f5;
+}
+
+.client-id {
+  color: black;
+}
+
+/* Toggle Icon Styling */
+.toggle-icon-container {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000; /* Ensure it's above other content */
+  background-color: #3f51b5;
+  width: 100%;
+  display: none;
+}
+/* Mobile view: show the toggle button */
+@media screen and (max-width: 968px) {
+  .toggle-icon-container {
+    display: flex;
+    justify-content: center;
+  }
+}
+/* Mobile View Animations */
+@media (max-width: 968px) {
+  .content-wrapper {
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .map-container {
+    height: 100%;
+    transform: translateY(0);
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .right-pane {
+    height: 100%;
+    transform: translateY(100%);
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .content-wrapper.map-active .right-pane {
+    transform: translateY(0);
+  }
+
+  .content-wrapper.map-active .map-container {
+    transform: translateY(-100%);
+  }
+}
+
+::ng-deep .ng-tns-c737557735-55 {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 968px) {
+  /* Adjust breakpoint as needed */
+  ::ng-deep .ng-tns-c737557735-55 {
+    display: block;
+  }
+}

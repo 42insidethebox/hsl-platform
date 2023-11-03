@@ -1,0 +1,217 @@
+<mat-horizontal-stepper
+  class="create-listing-container"
+  [linear]="true"
+  #stepper
+>
+  <!-- Step 1: Basic Information -->
+
+  <mat-step>
+    <ng-template matStepLabel>Basic Information</ng-template>
+
+    <form [formGroup]="listingForm" (ngSubmit)="submitListing()">
+      <!-- Basic Information -->
+
+      <h2>Basic Information</h2>
+
+      <!-- Category -->
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category">
+          <mat-option *ngFor="let cat of categories" [value]="cat">{{
+            cat
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- Title -->
+      <mat-form-field>
+        <input matInput placeholder="Title" formControlName="title" />
+        <mat-error *ngIf="listingForm.get('title')?.hasError('required')"
+          >Title is required</mat-error
+        >
+        <mat-error *ngIf="listingForm.get('title')?.hasError('minlength')"
+          >Title must be at least 5 characters</mat-error
+        >
+        <mat-error *ngIf="listingForm.get('title')?.hasError('maxlength')"
+          >Title can't exceed 100 characters</mat-error
+        >
+      </mat-form-field>
+      <!-- Description -->
+      <mat-form-field>
+        <textarea
+          class="description-area"
+          matInput
+          placeholder="Description"
+          formControlName="description"
+        ></textarea>
+        <mat-error *ngIf="listingForm.get('description')?.hasError('required')"
+          >Description is required</mat-error
+        >
+        <mat-error *ngIf="listingForm.get('description')?.hasError('minlength')"
+          >Description must be at least 20 characters</mat-error
+        >
+        <mat-error *ngIf="listingForm.get('description')?.hasError('maxlength')"
+          >Description can't exceed 3000 characters</mat-error
+        >
+      </mat-form-field>
+
+      <!-- Media Section -->
+      <mat-card class="media-section">
+        <mat-card-title class="upload-media">Media Upload</mat-card-title>
+
+        <!-- File Upload Section -->
+        <div class="file-upload">
+          <button
+            mat-raised-button
+            class="upload-media"
+            (click)="fileInput.click()"
+          >
+            <mat-icon class="upload-media">cloud_upload</mat-icon> Upload Media
+          </button>
+          <input
+            #fileInput
+            type="file"
+            (change)="onFileSelected($event)"
+            multiple
+            hidden
+          />
+        </div>
+
+        <!-- Drag & Drop Area -->
+        <div
+          class="media-upload-area"
+          cdkDropList
+          (cdkDropListDropped)="onDrop($event)"
+        >
+          <!-- Loop through media files and display them -->
+          <div
+            *ngFor="let media of listingForm.get('media')?.value; let i = index"
+            cdkDrag
+          >
+            <!-- Image Preview -->
+            <!-- Image Preview -->
+            <mat-card *ngIf="media.type === 'image'" class="media-item">
+              <div
+                class="image-preview"
+                [style.backgroundImage]="'url(' + media.url + ')'"
+              ></div>
+              <mat-icon class="drag-handle">drag_indicator</mat-icon>
+              <button mat-icon-button (click)="removeMedia(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-card>
+
+            <!-- Video Preview -->
+            <mat-card *ngIf="media.type === 'video'" class="media-item">
+              <video mat-card-image [src]="media.url" controls></video>
+              <mat-icon class="drag-handle">drag_indicator</mat-icon>
+              <button mat-icon-button (click)="removeMedia(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-card>
+          </div>
+        </div>
+      </mat-card>
+
+      <!-- Your other form elements and buttons -->
+      <div>
+        <mat-slide-toggle [checked]="toggleIsChecked" (change)="toggle($event)">
+          Toggle me!
+        </mat-slide-toggle>
+      </div>
+
+      <h2>Calendar</h2>
+      <!-- Create a form field with an input for the datepicker -->
+      <!-- ... existing HTML code -->
+      <!-- Existing HTML code -->
+      <div formGroupName="selectedDate">
+        <!-- Add this line -->
+        <mat-form-field appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="selectedDate"
+            (dateChange)="addEvent('change', $event)"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <!-- Add this line -->
+      <!-- Remaining HTML code -->
+      <!-- ... remaining HTML code -->
+      <!-- Submit Button -->
+      <button mat-raised-button class="mat-raised-button" type="submit">
+        Create Listing
+      </button>
+    </form>
+  </mat-step>
+  <!-- Step 2: Pricing -->
+  <mat-step>
+    <ng-template matStepLabel>Pricing</ng-template>
+    <form [formGroup]="listingForm" (ngSubmit)="submitListing()">
+      <!-- Pricing Model -->
+
+      <div formGroupName="pricing">
+        <mat-form-field>
+          <mat-label>Pricing Model</mat-label>
+          <mat-select formControlName="model">
+            <mat-option
+              *ngFor="let pricingModel of pricingModels"
+              [value]="pricingModel"
+              >{{ pricingModel }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <!-- Base Price -->
+        <mat-form-field>
+          <input
+            matInput
+            type="number"
+            placeholder="Base Price"
+            formControlName="basePrice"
+          />
+          <mat-error *ngIf="hasError('pricing.basePrice', 'required')"
+            >Base Price is required</mat-error
+          >
+          <mat-error *ngIf="hasError('pricing.basePrice', 'min')"
+            >Base Price must be 0 or greater</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <!-- Navigation buttons for Step 2 -->
+      <div>
+        <button mat-button type="button" (click)="goBack(stepper)">Back</button>
+        <button mat-button type="button" (click)="goForward(stepper)">
+          Next
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <!-- Step 3: Other Information -->
+  <mat-step>
+    <ng-template matStepLabel>Other Information</ng-template>
+    <!-- Add your other form elements for this step -->
+    <!-- ...
+    <!-- Navigation buttons for Step 3 -->
+    <div>
+      <button mat-button type="button" (click)="goBack(stepper)">Back</button>
+      <button mat-button type="button" (click)="goForward(stepper)">
+        Next
+      </button>
+    </div>
+  </mat-step>
+  <!-- Step 4: Review and Submit -->
+  <mat-step>
+    <ng-template matStepLabel>Review and Submit</ng-template>
+    <!-- Add a summary of the user's input for review -->
+    <!-- ...
+    <!-- Submit Button -->
+    <button mat-raised-button class="mat-raised-button" type="submit">
+      Create Listing
+    </button>
+  </mat-step>
+</mat-horizontal-stepper>

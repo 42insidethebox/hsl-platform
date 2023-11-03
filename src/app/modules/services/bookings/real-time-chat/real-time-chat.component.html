@@ -1,0 +1,114 @@
+<mat-card class="chat-container">
+  <!-- Chat Header -->
+  <mat-card-header class="chat-header">
+    <!-- Profile Image Icon -->
+    <mat-icon class="profile-icon">account_circle</mat-icon>
+
+    <!-- Chat Title and Status -->
+    <div class="chat-title-status">
+      <!-- Chat Title with Client Name -->
+      <mat-card-title class="chat-title">Chat with Client</mat-card-title>
+
+      <!-- Dynamic Status Indicator -->
+      <div class="status-indicator online"></div>
+      <!-- Use appropriate class for different statuses -->
+    </div>
+
+    <!-- Mini Actions -->
+    <div class="mini-actions">
+      <!-- Video Call Icon -->
+      <button mat-icon-button class="action-button" (click)="startVideoCall()">
+        <mat-icon>videocam</mat-icon>
+      </button>
+
+      <!-- Voice Call Icon -->
+      <button mat-icon-button class="action-button" (click)="startVoiceCall()">
+        <mat-icon>phone</mat-icon>
+      </button>
+
+      <!-- Info/Details Icon -->
+      <!-- Info/Details Icon with Tooltip -->
+      <button
+        mat-icon-button
+        class="action-button"
+        (click)="showClientDetails()"
+        matTooltip="{{ clientDetailsTooltip }}"
+        matTooltipPosition="above"
+      >
+        <mat-icon>info</mat-icon>
+      </button>
+    </div>
+  </mat-card-header>
+
+  <!-- Chat Messages Container -->
+  <mat-card-content class="chat-messages msgs">
+    <div class="message-container">
+      <!-- Individual Message Elements (Angular Material Expansion Panels) -->
+      <mat-expansion-panel *ngFor="let message of messages" class="message">
+        <mat-expansion-panel-header>
+          <!-- Message Sender's Avatar (Angular Material Avatar Component) -->
+          <!-- Place your avatar image here -->
+          <!-- For example: -->
+          <!-- <mat-avatar class="message-avatar">
+            <img src="{{ message.user.avatar }}" alt="User Avatar" />
+          </mat-avatar> -->
+
+          <!-- Message Sender's Name -->
+          <div class="message-sender">{{ message.user.name }}</div>
+          <!-- Message Timestamp (Angular Material Icon Component) -->
+          <mat-icon class="message-timestamp">access_time</mat-icon>
+          {{ message.timestamp | date : "medium" }}
+        </mat-expansion-panel-header>
+
+        <!-- Message Text (Angular Material Typography Classes) -->
+        <div class="message-text mat-body">{{ message.text }}</div>
+
+        <!-- Message Actions (Angular Material Buttons) -->
+        <div class="message-actions">
+          <button mat-icon-button (click)="replyMessage(message)">
+            <mat-icon>reply</mat-icon>
+          </button>
+          <button mat-icon-button (click)="forwardMessage(message)">
+            <mat-icon>forward</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteMessage(message)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+
+        <!-- Message Reactions (Angular Material Icons) -->
+        <div class="message-reactions">
+          <button mat-icon-button (click)="reactToMessage(message, 'like')">
+            <mat-icon>thumb_up</mat-icon>
+          </button>
+          <button mat-icon-button (click)="reactToMessage(message, 'love')">
+            <mat-icon>favorite</mat-icon>
+          </button>
+          <button mat-icon-button (click)="reactToMessage(message, 'emoji')">
+            <mat-icon>sentiment_satisfied</mat-icon>
+          </button>
+        </div>
+      </mat-expansion-panel>
+    </div>
+  </mat-card-content>
+
+  <!-- Chat Input Container (Angular Material Card Actions) -->
+  <mat-card-actions class="chat-input">
+    <div class="input-container">
+      <!-- Message Input Field (Angular Material Form Field Component) -->
+      <mat-form-field class="chat-input-field">
+        <textarea
+          matInput
+          [(ngModel)]="newMessage"
+          (keydown.enter)="sendMessage()"
+          placeholder="Type your message..."
+        ></textarea>
+      </mat-form-field>
+      <!-- "Send" Button (Angular Material Raised Button Component) -->
+      <button mat-raised-button color="primary" (click)="sendMessage()">
+        <mat-icon>send</mat-icon>
+        Send
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,113 @@
+<div class="reviews-section">
+  <!-- Filter and Sort Options -->
+  <div class="reviews-options">
+    <!-- Filtering Dropdown (MatSelectModule) -->
+    <mat-form-field appearance="fill">
+      <mat-label>Filter By</mat-label>
+      <mat-select [(ngModel)]="selectedFilter">
+        <mat-option value="recent">Most Recent</mat-option>
+        <mat-option value="rating">Highest Rating</mat-option>
+        <!-- Add more filtering options as needed -->
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Sorting Dropdown (MatSortModule) -->
+    <mat-form-field appearance="fill">
+      <mat-label>Sort By</mat-label>
+      <mat-select [(ngModel)]="selectedSort">
+        <mat-option value="date">Date</mat-option>
+        <mat-option value="rating">Rating</mat-option>
+        <!-- Add more sorting options as needed -->
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- Review Cards (MatCardModule) -->
+  <div class="review-cards">
+    <mat-card *ngFor="let review of reviews">
+      <mat-card-header>
+        <!-- User Avatar (MatIconModule) -->
+        <div class="user-avatar">
+          <img [src]="review.userAvatarUrl" alt="{{ review.userName }}" />
+        </div>
+        <!-- Reviewer Name -->
+        <mat-card-title>{{ review.userName }}</mat-card-title>
+        <!-- Review Date -->
+        <mat-card-subtitle>{{
+          review.postedDate | date : "mediumDate"
+        }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- Rating with Tooltip (MatTooltipModule) -->
+        <div class="review-rating">
+          <mat-icon class="star-icon" matTooltip="{{ review.rating }} out of 5"
+            >star</mat-icon
+          >
+        </div>
+        <!-- Review Content -->
+        <p>{{ review.content }}</p>
+        <!-- Images Gallery (MatGridListModule) -->
+        <div class="image-gallery">
+          <!-- Iterate through review.images if available -->
+          <mat-grid-list cols="3" rowHeight="150px">
+            <mat-grid-tile *ngFor="let image of review.images">
+              <img [src]="image" alt="Review Image" />
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <mat-nav-list>
+          <mat-list-item>
+            <button
+              mat-icon-button
+              (click)="markHelpful(review)"
+              matTooltip="Mark as helpful"
+            >
+              <mat-icon>thumb_up</mat-icon>
+            </button>
+          </mat-list-item>
+          <mat-list-item>
+            <button
+              mat-icon-button
+              (click)="markNotHelpful(review)"
+              matTooltip="Mark as not helpful"
+            >
+              <mat-icon>thumb_down</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-nav-list>
+
+        <!-- Report Button (MatDialogModule) -->
+        <button
+          mat-icon-button
+          (click)="reportReview(review)"
+          matTooltip="Report this review"
+        >
+          <mat-icon>flag</mat-icon>
+        </button>
+      </mat-card-actions>
+      <!-- User Interactions (MatListModule) -->
+      <mat-nav-list>
+        <mat-list-item>
+          <button mat-icon-button (click)="markHelpful(review)">
+            <mat-icon>thumb_up</mat-icon>
+          </button>
+          <span mat-line>{{ review.helpfulCount }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-icon-button (click)="markNotHelpful(review)">
+            <mat-icon>thumb_down</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-card>
+  </div>
+
+  <!-- Pagination (MatPaginatorModule) -->
+  <mat-paginator
+    [length]="totalReviews"
+    [pageSize]="reviewsPerPage"
+    [pageSizeOptions]="[5, 10, 20]"
+  ></mat-paginator>
+</div>

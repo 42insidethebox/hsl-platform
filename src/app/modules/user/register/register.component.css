@@ -1,0 +1,102 @@
+.register-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.register-header h1,
+.register-header p {
+  margin: 0;
+  padding: 0;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 90%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.register-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.social-registration {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.social-registration p {
+  margin-bottom: 8px;
+}
+
+.google-register,
+.facebook-register,
+.apple-register,
+.github-register,
+.discord-register {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff;
+  color: #333;
+  transition: background-color 0.2s ease;
+}
+
+.google-register {
+  background-color: #4285f4;
+  color: white;
+}
+
+.facebook-register {
+  background-color: #3b5998;
+  color: white;
+}
+
+.apple-register {
+  background-color: black;
+  color: white;
+}
+
+.github-register {
+  /* Style for GitHub register button */
+}
+
+.discord-register {
+  /* Style for Discord register button */
+}
+
+.login-section {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.login-section a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.login-section a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,204 @@
+<!-- User Information Display -->
+<mat-card class="user-info-card">
+  <mat-card-content>
+    <div class="user-profile">
+      <img
+        src="../../../../assets/images/avatars/1.png"
+        alt="User Avatar"
+        class="user-avatar"
+      />
+
+      <div class="user-details">
+        <h3 class="mat-h3">John Doe</h3>
+        <div class="user-location">
+          <mat-icon class="mat-icon location-icon">location_on</mat-icon>
+          <span class="mat-body-2 location-text">New York, NY</span>
+        </div>
+        <div class="user-bio">
+          <p class="mat-body-1">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus
+            libero eget tortor fermentum, eu tincidunt quam congue.
+          </p>
+        </div>
+        <div class="join-date">
+          <mat-icon class="mat-icon event-icon">event</mat-icon>
+          <span class="mat-body-2 join-text">Joined on January 15, 2022</span>
+        </div>
+      </div>
+    </div>
+    <app-cta></app-cta>
+  </mat-card-content>
+</mat-card>
+
+<!-- Additional User Info (Expandable) -->
+<mat-expansion-panel>
+  <mat-expansion-panel-header style="height: auto">
+    <mat-panel-title>
+      <mat-card class="activity-widget">
+        <mat-card-content class="activity-widget">
+          <div class="metric">
+            <mat-icon>work</mat-icon>
+            <p class="metric-label">Total Services Rented</p>
+            <p class="metric-value">50</p>
+          </div>
+          <div class="metric">
+            <mat-icon>done</mat-icon>
+            <p class="metric-label">Transactions Completed</p>
+            <p class="metric-value">45</p>
+          </div>
+          <div class="metric">
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+
+            <p class="metric-label">User Ratings Received</p>
+            <p class="metric-value">4.8</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-card>
+    <mat-card-content>
+      <section id="activity-metrics">
+        <mat-card class="achievement-widget">
+          <mat-card-content class="ngcontent-ng-c2828127997">
+            <!-- Badge 1 -->
+            <div class="badge-section">
+              <mat-icon class="badge-icon badge-icon-1" style="color: #ff5733"
+                >stars</mat-icon
+              >
+              <div class="badge-details">
+                <h3 class="badge-title">Top Performer</h3>
+                <p class="badge-description">
+                  Awarded for outstanding performance and contributions to the
+                  community.
+                </p>
+              </div>
+            </div>
+
+            <!-- Badge 2 -->
+            <div class="badge-section">
+              <mat-icon class="badge-icon badge-icon-2" style="color: #33ff57"
+                >loyalty</mat-icon
+              >
+              <div class="badge-details">
+                <h3 class="badge-title">Loyal Member</h3>
+                <p class="badge-description">
+                  Recognized for continued loyalty and engagement on our
+                  platform.
+                </p>
+              </div>
+            </div>
+
+            <!-- Badge 3 -->
+            <div class="badge-section">
+              <mat-icon class="badge-icon badge-icon-3" style="color: #5733ff"
+                >thumb_up</mat-icon
+              >
+              <div class="badge-details">
+                <h3 class="badge-title">Thumbs Up</h3>
+                <p class="badge-description">
+                  Awarded for receiving numerous positive reviews from users.
+                </p>
+              </div>
+            </div>
+
+            <!-- Badge 4 -->
+            <div class="badge-section">
+              <mat-icon class="badge-icon badge-icon-4" style="color: #33a5ff"
+                >group</mat-icon
+              >
+              <div class="badge-details">
+                <h3 class="badge-title">Community Builder</h3>
+                <p class="badge-description">
+                  Recognized for actively contributing to building a vibrant
+                  community.
+                </p>
+              </div>
+            </div>
+
+            <!-- Badge 5 -->
+            <div class="badge-section">
+              <mat-icon class="badge-icon badge-icon-5" style="color: #33a5ff"
+                >attach_money</mat-icon
+              >
+              <div class="badge-details">
+                <h3 class="badge-title">Money Maker</h3>
+                <p class="badge-description">
+                  Awarded for generating substantial income through our
+                  platform.
+                </p>
+              </div>
+            </div>
+
+            <!-- Badge 6 -->
+            <div class="badge-section">
+              <mat-icon class="badge-icon badge-icon-6" style="color: #ffbf00"
+                >emoji_events</mat-icon
+              >
+              <div class="badge-details">
+                <h3 class="badge-title">Achievement Unlocked</h3>
+                <p class="badge-description">
+                  Unlocked a significant achievement on our platform.
+                </p>
+              </div>
+            </div>
+
+            <!-- Badge 7 -->
+            <div class="badge-section">
+              <mat-icon class="badge-icon badge-icon-7" style="color: #ffbf00"
+                >favorite</mat-icon
+              >
+              <div class="badge-details">
+                <h3 class="badge-title">Favorites</h3>
+                <p class="badge-description">
+                  Recognized for being a favorite choice among users.
+                </p>
+              </div>
+            </div>
+
+            <!-- Badge 8 -->
+            <div class="badge-section">
+              <mat-icon class="badge-icon badge-icon-8" style="color: #ffbf00"
+                >supervisor_account</mat-icon
+              >
+              <div class="badge-details">
+                <h3 class="badge-title">Supervisor</h3>
+                <p class="badge-description">
+                  Awarded for supervising and mentoring new members.
+                </p>
+              </div>
+            </div>
+
+            <!-- Badge 9 -->
+            <div class="badge-section">
+              <mat-icon class="badge-icon badge-icon-9" style="color: #ffbf00"
+                >vpn_lock</mat-icon
+              >
+              <div class="badge-details">
+                <h3 class="badge-title">Security Guru</h3>
+                <p class="badge-description">
+                  Recognized for ensuring the security of our platform.
+                </p>
+              </div>
+            </div>
+
+            <!-- Badge 10 -->
+            <div class="badge-section">
+              <mat-icon class="badge-icon badge-icon-10" style="color: #ffbf00"
+                >emoji_people</mat-icon
+              >
+              <div class="badge-details">
+                <h3 class="badge-title">People Person</h3>
+                <p class="badge-description">
+                  Awarded for exceptional interpersonal skills and user
+                  interactions.
+                </p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </section>
+    </mat-card-content>
+  </mat-card>
+</mat-expansion-panel>

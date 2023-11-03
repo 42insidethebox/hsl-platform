@@ -1,0 +1,107 @@
+financials-payments-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+  color: white;
+}
+
+.payment-methods-card .payment-methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.quick-actions-card button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Expansion Panels Styling */
+
+/* Global Styles for Expansion Panels */
+::ng-deep .mat-expansion-panel {
+  margin-bottom: 15px;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+}
+
+/* Transaction Details Panel */
+.transaction-details-panel {
+}
+
+.transaction-details-header,
+.transaction-details-title {
+  color: #333;
+}
+
+.transaction-details-content span {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Payment Breakdown Panel */
+.payment-breakdown-panel {
+}
+
+.payment-breakdown-header,
+.payment-breakdown-title {
+  color: rgb(0, 0, 0);
+}
+
+.payment-breakdown-content span {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Detailed Invoice Panel */
+.detailed-invoice-panel {
+}
+
+.detailed-invoice-header,
+.detailed-invoice-title {
+  color: rgb(0, 0, 0);
+}
+
+.detailed-invoice-content span {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Full Policy Panel */
+.full-policy-panel {
+}
+
+.full-policy-header,
+.full-policy-title {
+  color: rgb(0, 0, 0);
+}
+
+.full-policy-content span {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Additional Styling for Icons inside Expansion Panels */
+::ng-deep .mat-expansion-panel-content mat-icon {
+  margin-right: 10px;
+  color: rgb(0, 0, 0);
+}
+
+::ng-deep .mat-expansion-panel-body {
+  color: rgb(0, 0, 0) !important;
+}
+
+.payment-breakdown-panel {
+  width: 100%; /* Ensuring the panel takes the full width */
+}
+
+/* Override any specific styles if needed */
+::ng-deep .payment-breakdown-panel .mat-expansion-panel-content {
+  width: 100%;
+}
+
+.mat-accordion-payment,
+.mat-full-policy {
+  width: 100%;
+}

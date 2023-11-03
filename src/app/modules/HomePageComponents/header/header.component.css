@@ -1,0 +1,135 @@
+.color-toolbar {
+  /* background-color: rgb(18, 18, 18); */
+  background-color: rgb(51, 51, 196);
+}
+.hsl-logo {
+  align-self: center;
+}
+/* Base styles for larger screens */
+.menu-list {
+  display: flex;
+}
+
+.selectors {
+  display: flex;
+}
+.header-content {
+  width: 100%;
+}
+.mobile-wrap-menu {
+  display: flex;
+  align-items: center;
+}
+.mat-toolbar-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.utility-icons {
+  display: flex;
+}
+
+.vertical-divider {
+  margin: 0 4px;
+}
+
+.compact-selector {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  min-width: 180px; /* Adjust as needed */
+}
+
+.menu-title {
+  color: white !important;
+}
+
+.menu-icon {
+  color: white !important;
+}
+
+.mat-mdc-menu-item {
+  padding: 0;
+  width: auto;
+}
+
+.menu-item {
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+/* Media query for screens smaller than 1360px */
+@media (max-width: 1360px) {
+  .mobile-wrap-menu {
+    display: flex;
+    justify-content: space-between; /* Distribute items to both ends */
+    align-items: center; /* Vertically center items */
+    height: auto; /* Adjust the height based on content */
+  }
+
+  .menu-list,
+  .utility-icons {
+    display: none;
+    opacity: 0;
+  }
+  .mat-toolbar-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .selectors {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px; /* Adjust spacing between rows as needed */
+  }
+  .mat-toolbar-multiple-rows {
+    height: auto; /* Adjust the height based on content */
+  }
+  .mat-toolbar-row.large-screen {
+    height: 50px; /* Adjust the height as needed */
+  }
+}
+
+/* Styling for the burger icon */
+.burger-icon {
+  display: none; /* Initially hide the burger icon on larger screens */
+  cursor: pointer;
+  padding: 10px;
+}
+
+.burger-icon .bar {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  margin: 6px 0;
+  transition: 0.4s; /* Add a smooth transition effect to the bars */
+}
+
+/* Styles for the burger icon when active (menu open) */
+.burger-icon.active .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger-icon.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-icon.active .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Media query for screens smaller than 1360px */
+@media (max-width: 1360px) {
+  .burger-icon {
+    display: block; /* Display the burger icon on smaller screens */
+  }
+}
+
+@media (min-width: 1360px) {
+  .mat-toolbar-multiple-rows {
+    height: 50px;
+  }
+}

@@ -1,0 +1,112 @@
+<!-- Featured Listings Section -->
+<mat-card
+  [ngStyle]="{ width: calculateCardWidth() }"
+  [ngClass]="{ 'featured-listings': isFeaturedListings }"
+  [ngStyle]="{ width: '100%' }"
+>
+  <!-- Section Header -->
+  <mat-card-header class="featured-listings-header">
+    <div class="featured-listings-spacinng">
+      <mat-card-title> 🌟 Featured Listings </mat-card-title>
+      <mat-card-subtitle>
+        <div class="filter-sort-container">
+          <!-- Burger Icon -->
+          <button
+            mat-icon-button
+            (click)="toggleLeftSide()"
+            class="burger-icon"
+          >
+            <mat-icon>dehaze</mat-icon>
+          </button>
+
+          <!-- Sort By Option -->
+          <mat-form-field appearance="fill" class="sort-field">
+            <mat-label>Sort By</mat-label>
+            <mat-select id="sort-by">
+              <mat-option value="latest">Latest</mat-option>
+              <mat-option value="popular">Most Popular</mat-option>
+              <mat-option value="high-to-low">Price: High to Low</mat-option>
+              <mat-option value="low-to-high">Price: Low to High</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- Filter Button -->
+          <button mat-raised-button color="primary" class="filter-button">
+            <mat-icon>filter_list</mat-icon> Filter
+          </button>
+        </div>
+        <button mat-icon-button (click)="toggleRightSide()" class="burger-icon">
+          <mat-icon>dehaze</mat-icon>
+        </button>
+      </mat-card-subtitle>
+    </div>
+  </mat-card-header>
+  <!-- Listings Grid -->
+  <mat-grid-list [cols]="gridCols" rowHeight="680px">
+    <mat-grid-tile *ngFor="let listing of featuredListings">
+      <!-- Single Listing Card -->
+      <mat-card class="listing-card">
+        <!-- Card Header -->
+        <mat-card-header>
+          <div class="seller-info">
+            <img
+              mat-card-avatar
+              [src]="listing.seller.avatar"
+              alt="Seller Avatar"
+            />
+            <mat-card-title>{{ listing.seller.name }}</mat-card-title>
+          </div>
+          <mat-card-subtitle>
+            <button mat-icon-button>
+              <mat-icon>bookmark_border</mat-icon>
+            </button>
+            <button mat-icon-button><mat-icon>share</mat-icon></button>
+          </mat-card-subtitle>
+        </mat-card-header>
+
+        <!-- Image Carousel -->
+        <img [src]="listing.image" alt="Listing Image" class="listing-image" />
+        <!-- Implement your carousel component here -->
+
+        <!-- Listing Info -->
+        <mat-card-content>
+          <h2>{{ listing.title }}</h2>
+          <p>{{ listing.description }}</p>
+          <div class="listing-details">
+            <span><mat-icon>attach_money</mat-icon> {{ listing.price }}</span>
+            <span><mat-icon>location_on</mat-icon> {{ listing.location }}</span>
+            <span><mat-icon>label</mat-icon> {{ listing.category }}</span>
+          </div>
+        </mat-card-content>
+
+        <!-- User Interactions -->
+        <mat-card-actions>
+          <button mat-button>
+            <mat-icon>add_shopping_cart</mat-icon> Add to Cart
+          </button>
+          <button mat-button><mat-icon>payment</mat-icon> Buy Now</button>
+          <button mat-button><mat-icon>forum</mat-icon> Make an Offer</button>
+        </mat-card-actions>
+
+        <!-- Social Proof -->
+        <mat-card-footer>
+          <div class="ratings">
+            <!-- Implement your ratings component here -->
+          </div>
+          <div class="reviews">
+            <!-- Implement your reviews component here -->
+          </div>
+        </mat-card-footer>
+      </mat-card>
+      <!-- End of Single Listing Card -->
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <!-- Pagination -->
+  <mat-paginator
+    [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+  ></mat-paginator>
+</mat-card>
+<!-- End of Featured Listings Section -->

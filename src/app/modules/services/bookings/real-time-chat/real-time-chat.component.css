@@ -1,0 +1,195 @@
+::ng-deep .chat-container {
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.576);
+}
+::ng-deep .mat-mdc-tab-body-wrapper {
+}
+* {
+}
+
+/* Add the following CSS to your component's CSS file */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: white;
+  width: 400px;
+}
+
+.chat-header {
+  flex: 0; /* Header should not grow or shrink */
+}
+
+.msgs {
+  min-height: 350px;
+}
+.chat-messages {
+  flex: 1; /* Messages container should grow to fill available space */
+  overflow-y: auto; /* Enable vertical scroll for messages */
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Adjust as needed for spacing between messages */
+}
+
+.chat-input {
+  flex: 0; /* Input container should not grow or shrink */
+}
+
+.input-container {
+  display: flex;
+  gap: 16px; /* Adjust as needed for spacing between input and button */
+  align-items: center; /* Center input and button vertically */
+}
+
+::ng-deep .mat-mdc-tab-body-content {
+  overflow-y: hidden !important;
+}
+
+::ng-deep .input-container {
+  width: 100%;
+  background-color: #eee;
+}
+
+.chat-input-field {
+  width: 100%;
+  height: 130px;
+}
+
+/* Add the following CSS to your component's CSS file */
+
+.chat-input-field textarea {
+  resize: none; /* Disable textarea resizing */
+  height: 40px; /* Set a fixed height for the textarea */
+  /* You can adjust the height value as per your design requirements */
+}
+
+/* Add the following CSS to your component's CSS file */
+
+/* Chat Container */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #f0f0f0; /* Set a background color */
+}
+
+/* Chat Header */
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Profile and Status */
+.chat-title-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Status Indicator */
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.online {
+  background-color: green;
+}
+
+.offline {
+  background-color: red;
+}
+
+/* Mini Actions */
+.mini-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.action-button {
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.action-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Chat Header */
+.chat-header {
+  flex: 0;
+  background-color: #2196f3; /* Header background color */
+  color: white; /* Header text color */
+  padding: 12px; /* Header padding */
+}
+
+/* Chat Messages Container */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px; /* Add padding to messages container */
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+/* Individual Message */
+.message {
+  background-color: #fff; /* Message background color */
+  border-radius: 8px; /* Rounded message containers */
+  padding: 12px; /* Message padding */
+  margin-bottom: 12px; /* Spacing between messages */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Message box shadow */
+}
+
+/* Message Sender's Name */
+.message-sender {
+  font-weight: 600; /* Bold sender's name */
+}
+
+/* Message Timestamp */
+.message-timestamp {
+  font-size: 14px; /* Timestamp font size */
+  margin-left: 8px; /* Spacing from sender's name */
+}
+
+/* Message Text */
+.message-text {
+  margin-top: 8px; /* Spacing from sender's name */
+}
+
+/* Message Actions */
+.message-actions {
+  display: flex;
+  gap: 8px; /* Spacing between action buttons */
+}
+
+/* Message Reactions */
+.message-reactions {
+  margin-top: 8px; /* Spacing from message text */
+  display: flex;
+  gap: 8px; /* Spacing between reaction buttons */
+}
+
+/* Chat Input Container */
+.chat-input {
+  flex: 0;
+  background-color: #fff; /* Input container background color */
+}
+
+/* Message Input Field */
+.chat-input-field {
+  width: 100%;
+  background-color: #f5f5f5; /* Input field background color */
+}
+
+/* Send Button */
+.chat-input-field button {
+  background-color: #2196f3; /* Send button background color */
+  color: white; /* Send button text color */
+  font-weight: 600; /* Bold send button text */
+}

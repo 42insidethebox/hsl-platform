@@ -1,0 +1,149 @@
+/* Variables for reuse */
+:root {
+  --primary-color: #1976d2;
+  --secondary-color: #424242;
+  --font-size-base: 16px;
+}
+
+/* Targeting create-listing-container specifically to avoid style clashes */
+.create-listing-container {
+  font-size: var(--font-size-base);
+  overflow-y: auto; /* Enable vertical scrolling */
+  display: flex;
+  justify-content: center;
+  height: calc(100vh - 70px);
+}
+
+form {
+  width: 1000px;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+/* Styling the form headings */
+.create-listing-container h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Styling the form fields */
+.create-listing-container mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Styling the input and textarea */
+.create-listing-container input,
+.create-listing-container textarea {
+  font-size: var(--font-size-base);
+}
+
+/* Styling the select dropdowns */
+.create-listing-container mat-select {
+  width: 100%;
+}
+
+/* Styling checkboxes */
+.create-listing-container mat-checkbox {
+  margin: 10px 0;
+}
+
+/* Styling the submit button */
+.create-listing-container button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .create-listing-container {
+    margin: 10px;
+  }
+}
+
+.mat-raised-button {
+  color: black !important;
+}
+
+.description-area {
+  height: 200px !important;
+}
+
+.media-section {
+  margin: 20px 0;
+  padding: 20px;
+}
+
+.file-upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.media-upload-area {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.media-item {
+  position: relative;
+  max-width: 150px;
+}
+
+.drag-handle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: grab;
+}
+
+button[mat-icon-button] {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.upload-media {
+  color: white !important;
+}
+
+.media-section {
+  background-color: rgb(51, 51, 196);
+}
+
+.media-item .image-preview {
+  width: 150px; /* or whatever square size you want */
+  height: 150px;
+  background-size: cover; /* ensures the image covers the entire square */
+  background-position: center; /* centers the image */
+  background-repeat: no-repeat; /* prevents image tiling */
+}
+
+/* ... existing styles ... */
+
+.thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.thumbnails img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.thumbnails mat-icon {
+  font-size: 50px;
+  cursor: pointer;
+}

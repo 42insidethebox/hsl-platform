@@ -1,0 +1,45 @@
+<!-- Button Row -->
+<div class="button-row mat-elevation-z4">
+  <!-- Primary Button - Go HSL (assumed to be previously defined) -->
+  <button mat-raised-button color="primary" (click)="goHSL()">Go HSL</button>
+
+  <!-- Secondary Button - Schedule Workday -->
+  <button mat-button color="accent" (click)="scheduleWorkday()">
+    Schedule Workday
+  </button>
+
+  <!-- Informational Elements -->
+  <!-- Daily Earnings Snapshot -->
+  <div class="daily-earnings">
+    <mat-progress-bar
+      mode="determinate"
+      [value]="earningsPercentage"
+    ></mat-progress-bar>
+    <span class="earnings-text"
+      >{{ currentEarnings }} / {{ targetEarnings }} earned today</span
+    >
+  </div>
+
+  <!-- Total Tasks or Services Scheduled -->
+  <div class="scheduled-tasks">
+    <mat-icon>calendar_today</mat-icon>
+    <span>{{ tasksScheduled }} tasks scheduled today</span>
+  </div>
+
+  <!-- Visual Indicators -->
+  <!-- Status Indicator -->
+  <div class="status-indicator" [ngClass]="currentStatus">
+    <span *ngIf="currentStatus === 'active'">Active</span>
+    <span *ngIf="currentStatus === 'onBreak'">On Break</span>
+    <span *ngIf="currentStatus === 'offline'">Offline</span>
+  </div>
+
+  <!-- Toggle Switch for Availability -->
+  <mat-slide-toggle
+    color="accent"
+    [(ngModel)]="availability"
+    (change)="toggleAvailability()"
+  >
+    {{ availability ? "Available" : "Unavailable" }}
+  </mat-slide-toggle>
+</div>

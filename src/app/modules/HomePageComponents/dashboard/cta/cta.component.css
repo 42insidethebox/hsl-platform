@@ -1,0 +1,78 @@
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #fff;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.button-row button {
+  margin-right: 10px;
+}
+
+.button-row .daily-earnings {
+  display: flex;
+  align-items: center;
+}
+
+.button-row .daily-earnings .earnings-text {
+  font-size: 0.9rem;
+  margin-left: 8px;
+}
+
+.button-row .daily-earnings mat-progress-bar {
+  width: 100px;
+  margin-right: 8px;
+}
+
+.button-row .scheduled-tasks {
+  display: flex;
+  align-items: center;
+}
+
+.button-row .scheduled-tasks span {
+  font-size: 0.9rem;
+  margin-left: 8px;
+}
+
+.button-row .scheduled-tasks mat-icon {
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+.button-row .status-indicator {
+  font-size: 0.9rem;
+  padding: 6px 10px;
+  border-radius: 16px;
+}
+
+.button-row .status-indicator.active {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.button-row .status-indicator.onBreak {
+  background-color: #ffb300;
+  color: #fff;
+}
+
+.button-row .status-indicator.offline {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.button-row .icons {
+  display: flex;
+  align-items: center;
+}
+
+.button-row .icons mat-icon {
+  font-size: 20px;
+  margin-left: 8px;
+}
+
+.button-row mat-slide-toggle {
+  margin-left: auto;
+}
