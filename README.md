@@ -152,3 +152,181 @@ The HSL platform's codebase is organized into modular components, ensuring both 
     - **Sub-Modules (Booking, Listing)**
       - `./booking`: Booking component files.
       - `./listing`: Service listing component files.
+
+Together, these core modules encapsulate the primary business logic of HSL:  
+- **Transaction** for financial operations 💳  
+- **Admin** for platform oversight 🛠️  
+- **User** for account and identity management 👤  
+- **Service** for the marketplace ecosystem 📦  
+
+This modular structure ensures the platform remains scalable, testable, and easy to maintain as features expand.
+
+3. Extended Codebase Walkthrough 🧭
+
+The HSL platform is now focused on the frontend client layer, architected in Angular, supported by shared libraries, reusable components, and testing suites. While the original design included a Node/Express backend, the current repo is frontend-first, with backend integration points left open for future expansion.
+
+3.1 Frontend (Angular) 🅰️
+
+Located under ./src/app, the frontend implements the full Single Page Application.
+
+Key Directories:
+
+./src/app/modules/ → Core feature modules (Transaction, Admin, User, Service).
+./src/app/shared/ → Shared Angular Material modules, services, and utilities.
+./src/app/store/ → Application state management (actions, reducers, state).
+./src/assets/ → Static resources (icons, avatars, logos) and utility scripts.
+
+3.2 Shared Components & UI Library 🎨
+
+Custom UI elements live under ./components/ (cards, buttons, forms, modals, tables, etc.).
+
+./components/cards/ → InfoCard, StatCard.
+./components/buttons/ → PrimaryButton, SecondaryButton.
+./components/forms/ → Input, Checkbox, Select.
+./components/modals/ → ConfirmModal, Dialog.
+./components/tables/ → DataTable, UserTable.
+./components/ui/ → TabBar, IconSymbol, ThemedView/Text.
+
+This modular design ensures fast development and consistent UX.
+
+---
+
+# **4. Application Core: AppModule** ⚡
+
+The **`AppModule`** (`./src/app/app.module.ts`) serves as the **central orchestrator** of the HSL platform. It declares components, imports feature modules, and configures Angular’s core services like routing, state management, and HTTP communication.
+
+---
+
+## **4.1 Declarations** 🧩
+
+The `declarations` array registers **all components** that belong to this application:
+
+* **User Flows**: `LoginComponent`, `RegisterComponent`, `BookingsTransactionsComponent`, `MyProfileComponent`, `UserProfileInfoComponent`, `ProviderProfileComponent`.
+* **Homepage & Dashboard**: `HeroSectionComponent`, `HowItWorksComponent`, `FeaturedListingsComponent`, `CTAsComponent`, `CtaComponent`, `DashboardComponent`.
+* **Dashboard Widgets**: `UserInfoComponent`, `UserActivityMetricsComponent`, `UserBadgesComponent`, `EarningsOverviewComponent`, `HistoryTimelineComponent`, `HeatmapSectionComponent`, `ReviewsSectionComponent`.
+* **Service & Listings**: `ListingComponent`, `BrowseListingsComponent`, `MyListingsComponent`, `CategoriesComponent`, `FavoritesComponent`, `ReviewsComponent`.
+* **Admin Panel**: `UserDialogComponent`, `PicklistComponentComponent`.
+* **Shared UI**: `HeaderComponent`, `MapComponent`.
+
+This modular declaration approach ensures **reusability** and **testability** across the codebase.
+
+---
+
+## **4.2 Imports** 📦
+
+The `imports` array integrates **Angular libraries**, **Material UI modules**, and **feature modules**:
+
+* **Core Angular**:
+
+  * `BrowserModule`, `FormsModule`, `ReactiveFormsModule`, `BrowserAnimationsModule`, `HttpClientModule`.
+* **Angular Material**:
+
+  * `SharedMaterialModule`, `MatDialogModule`, `MatStepperModule`.
+* **State Management (NgRx)**:
+
+  * `StoreModule.forRoot({ app: appReducer })`
+  * `EffectsModule.forRoot([])`
+* **Feature Modules**:
+
+  * `ServiceModule`, `TransactionRoutingModule`, `ServicesRoutingModule`, `UserProfileRoutingModule`.
+* **Routing**:
+
+  * `AppRoutingModule` (central routing config).
+  * `RouterModule.forRoot([...])` (root-level route definitions).
+
+---
+
+## **4.3 Routing** 🛣️
+
+Defined inline with `RouterModule.forRoot()`:
+
+```ts
+{ path: '', redirectTo: '/dashboard', pathMatch: 'full' },  
+{ path: 'dashboard', component: DashboardComponent },  
+{ path: 'listings', component: ListingComponent },  
+```
+
+This ensures:
+
+* Default path → Dashboard.
+* Listings path → Service listing module.
+* Extendable for future features.
+
+---
+
+## **4.4 Bootstrap** 🚀
+
+```ts
+bootstrap: [AppComponent]
+```
+
+The application boots from `AppComponent`, which serves as the root shell for rendering all other components.
+
+---
+
+# **5. Roadmap & Lessons Learned** 🛠️
+
+The current HSL repo emphasizes the **frontend Angular client**, but the architecture was always intended as full MEAN.  
+Next milestones:  
+- **Backend Rebuild**: Re-implement Express.js services with MongoDB integration.  
+- **API Layer**: Document REST endpoints for services, transactions, and profiles.  
+- **CI/CD**: Integrate automated testing and deployment pipelines.  
+- **DevOps**: Reinforce backup + versioning protocols (lesson learned after one accidental `rm -rf` 😅).  
+
+This ensures HSL remains future-proof, resilient, and extensible for production environments.
+
+An earlier backend prototype was lost during a local cleanup incident back in 2023 — a valuable reminder of the importance of backups and strict versioning. This experience directly shaped my commit discipline and DevOps roadmap, ensuring HSL evolves with resilience baked in.
+
+
+# **6. Getting Started** 🚀
+
+1. Clone the repo  
+   ```bash
+   git clone https://github.com/username/hsl.git
+   cd hsl
+
+    Install dependencies
+
+npm install
+
+Run the dev server
+
+    ng serve
+
+The app will be available at http://localhost:4200/.
+
+# **5. Roadmap & Lessons Learned** 🛠️
+
+The current HSL repo emphasizes the **frontend Angular client**, but the architecture was always intended as full MEAN.  
+
+### **Next Milestones** 📌
+- **Backend Rebuild**: Re-implement Express.js services with MongoDB integration.  
+- **API Layer**: Document REST endpoints for services, transactions, and profiles.  
+- **CI/CD**: Integrate automated testing and deployment pipelines.  
+- **DevOps**: Reinforce backup + versioning protocols (lesson learned after one accidental `rm -rf` 😅).  
+
+This roadmap ensures HSL remains **future-proof, resilient, and extensible** for production environments.  
+
+> ⚠️ An earlier backend prototype was lost during a local cleanup incident back in 2023 — a valuable reminder of the importance of backups and strict versioning. This experience directly shaped my commit discipline and DevOps practices, ensuring resilience is now baked into the evolution of HSL.  
+
+---
+
+# **6. Getting Started** 🚀
+
+Follow these steps to run the project locally:
+
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/username/hsl.git
+   cd hsl
+
+    Install dependencies
+
+npm install
+
+Run the dev server
+
+ng serve
+
+Open your browser and navigate to:
+👉 http://localhost:4200/
