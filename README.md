@@ -263,38 +263,6 @@ bootstrap: [AppComponent]
 The application boots from `AppComponent`, which serves as the root shell for rendering all other components.
 
 ---
-
-# **5. Roadmap & Lessons Learned** 🛠️
-
-The current HSL repo emphasizes the **frontend Angular client**, but the architecture was always intended as full MEAN.  
-Next milestones:  
-- **Backend Rebuild**: Re-implement Express.js services with MongoDB integration.  
-- **API Layer**: Document REST endpoints for services, transactions, and profiles.  
-- **CI/CD**: Integrate automated testing and deployment pipelines.  
-- **DevOps**: Reinforce backup + versioning protocols (lesson learned after one accidental `rm -rf` 😅).  
-
-This ensures HSL remains future-proof, resilient, and extensible for production environments.
-
-An earlier backend prototype was lost during a local cleanup incident back in 2023 — a valuable reminder of the importance of backups and strict versioning. This experience directly shaped my commit discipline and DevOps roadmap, ensuring HSL evolves with resilience baked in.
-
-
-# **6. Getting Started** 🚀
-
-1. Clone the repo  
-   ```bash
-   git clone https://github.com/username/hsl.git
-   cd hsl
-
-    Install dependencies
-
-npm install
-
-Run the dev server
-
-    ng serve
-
-The app will be available at http://localhost:4200/.
-
 # **5. Roadmap & Lessons Learned** 🛠️
 
 The current HSL repo emphasizes the **frontend Angular client**, but the architecture was always intended as full MEAN.  
