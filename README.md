@@ -319,14 +319,14 @@ Follow these steps to run the project locally:
    ```bash
    git clone https://github.com/username/hsl.git
    cd hsl
-
+   ```
     Install dependencies
-
-npm install
-
+   ```bash
+   npm install
+   ```
 Run the dev server
-
-ng serve
-
+  ```bash
+  ng serve
+  ```
 Open your browser and navigate to:
 👉 http://localhost:4200/
