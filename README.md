@@ -4,7 +4,7 @@ Welcome to the technological heart of the HSL project. Dive into our codebase, g
 
 ### Demo Video (HSL Platform)
 
-<video src="https://github.com/user-attachments/assets/dda214f4-ecb1-4326-8556-7b14f90660cd"
+<video src="https://github.com/user-attachments/assets/58550ce3-75aa-4a7a-8d34-32fca313cb38"
        width="600"
        controls
        loop
