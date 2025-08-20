@@ -1,19 +1,13 @@
-# **HSL Project Documentation** 📘
+### HSL — Full-Stack Platform (Typescript/Angular)
 
-Welcome to the technological heart of the HSL project. Dive into our codebase, grasp the architecture, and join the development journey.
+Responsive, modular front-end application (30k+ LOC). Features include dashboard analytics, Google Maps integration, dynamic UI components, smooth animations and more !
 
-### Demo Video (HSL Platform)
+Originally built in Angular, currently being migrated to React Native for cleaner modularity, maintainability, MVP and scalability.
+
+### Demo (HSL Platform)
 
 ![Image](https://github.com/user-attachments/assets/f4246a75-04c5-4c39-afa9-d3e3124757ea)
 
-//
-
-<video src="https://github.com/user-attachments/assets/58550ce3-75aa-4a7a-8d34-32fca313cb38"
-       width="600"
-       controls
-       loop
-       muted>
-</video>
 ## **Table of Contents** 📚
 
 ###### **Technological Overview** 🖥️
