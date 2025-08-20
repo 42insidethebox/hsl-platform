@@ -4,6 +4,10 @@ Welcome to the technological heart of the HSL project. Dive into our codebase, g
 
 ### Demo Video (HSL Platform)
 
+![Image](https://github.com/user-attachments/assets/f4246a75-04c5-4c39-afa9-d3e3124757ea)
+
+//
+
 <video src="https://github.com/user-attachments/assets/58550ce3-75aa-4a7a-8d34-32fca313cb38"
        width="600"
        controls
