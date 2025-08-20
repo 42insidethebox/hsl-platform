@@ -2,10 +2,14 @@
 
 Welcome to the technological heart of the HSL project. Dive into our codebase, grasp the architecture, and join the development journey.
 
-<video src="https://github.com/user-attachments/assets/dda214f4-ecb1-4326-8556-7b14f90660cd"
-       autoplay loop muted playsinline width="600">
-</video>
+### Demo Video (HSL Platform)
 
+<video src="https://github.com/user-attachments/assets/dda214f4-ecb1-4326-8556-7b14f90660cd"
+       width="600"
+       controls
+       loop
+       muted>
+</video>
 ## **Table of Contents** 📚
 
 ###### **Technological Overview** 🖥️
