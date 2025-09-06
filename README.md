@@ -270,3 +270,40 @@ ng serve
 Open browser at:
 👉 [http://localhost:4200/](http://localhost:4200/)
 
+---
+
+# 🛠️ Roadmap & Lessons Learned
+
+The HSL project continues to evolve toward production readiness with both **frontend modernization** and **backend refactor**.
+
+---
+
+### 📌 Next Milestones
+
+* **Frontend Evolution**
+
+  * Progressive migration from Angular to **React Native** for modularity, maintainability, and cross-platform deployment.
+  * Strengthened UI consistency with shared component libraries and enhanced state management.
+
+* **Backend Refactor & Private Scaffold**
+
+  * Migration of the backend into a **dedicated private repository**, with modular scaffolding for services.
+  * Adoption of **YAML-based API contracts (OpenAPI)** to drive **automated scaffolding of controllers and services**, ensuring contract-first development.
+  * Transition from MongoDB prototype to **PostgreSQL** for relational integrity and **Redis** for in-memory caching, session management, and queue handling.
+  * CI/CD integration to enable **automated code generation**, **test pipelines**, and **cloud-ready deployment**.
+  * Clear separation of concerns: frontend and backend evolve independently but remain contractually aligned.
+
+* **Cloud-Readiness**
+
+  * Containerization (Docker) of both client and backend services.
+  * Infrastructure-as-Code pilots (Terraform) for reproducible environments.
+  * Monitoring and observability integration (Grafana / Prometheus stack under evaluation).
+
+---
+
+### 📚 Lessons Learned
+
+* **Contract-First Development**: OpenAPI-driven scaffolding reduces drift between frontend and backend.
+* **Polyglot Persistence**: Matching the right database to the right workload (relational vs in-memory) creates more scalable architecture.
+* **Separation of Concerns**: Splitting frontend and backend into independent repos ensures maintainability, testing flexibility, and resilience.
+* **Versioning & CI/CD**: Infrastructure and pipeline automation prevent downtime and enforce consistency across environments.
